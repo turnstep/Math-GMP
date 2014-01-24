@@ -51,6 +51,36 @@ not_there:
     return 0;
 }
 
+mpz_t *
+pv2gmp(char* pv)
+{
+	mpz_t* z;
+	SV* sv;
+
+	z = malloc (sizeof(mpz_t));
+	mpz_init_set_str(*z, pv, 0);
+	sv = sv_newmortal();
+	sv_setref_pv(sv, "Math::GMP", (void*)z);
+	return z;
+}
+
+mpz_t *
+sv2gmp(SV* sv)
+{
+	char* pv;
+
+	/* MAYCHANGE in perlguts.pod - bug in perl */
+	if (SvGMAGICAL(sv)) mg_get(sv);
+
+	if (SvROK(sv) && sv_derived_from(sv, "Math::GMP")) {
+		IV tmp = SvIV((SV*)SvRV(sv));
+		return (mpz_t *)tmp;
+	}
+
+	pv = SvPV_nolen(sv);
+	return pv2gmp(pv);
+}
+
 
 MODULE = Math::GMP		PACKAGE = Math::GMP		
 PROTOTYPES: ENABLE

@@ -2,12 +2,10 @@ mpz_t *		MPZ
 
 INPUT
 MPZ
-        if (sv_derived_from($arg, \"Math::GMP\")) {
-            IV tmp = SvIV((SV*)SvRV($arg));
-            $var = ($type) tmp;
-        }
-        else
-            croak(\"$var is not of type Math::GMP\")
+	$var = sv2gmp($arg);
+
+bool
+	$var = (bool)SvTRUE($arg);
 
 OUTPUT
 MPZ

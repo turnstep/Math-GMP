@@ -137,8 +137,7 @@ sub intify {
 }
 
 sub promote {
-	return $_[0] if ref $_[0] eq 'Math::GMP';
-	return Math::GMP::new_from_scalar($_[0] || 0);
+	return $_[0];
 }
 
 sub gcd {
