@@ -136,65 +136,61 @@ sub intify {
 	return Math::GMP::intify_gmp($_[0]);
 }
 
-sub promote {
-	return $_[0];
-}
-
 sub gcd {
-	return gcd_two(promote(shift), promote(shift));
+	return gcd_two(shift, shift);
 }
 
 sub bgcd {
-	return gcd_two(promote(shift), promote(shift));
+	return gcd_two(shift, shift);
 }
 
 sub legendre {
-	return gmp_legendre(promote(shift), promote(shift));
+	return gmp_legendre(shift, shift);
 }
 
 sub jacobi {
-	return gmp_jacobi(promote(shift), promote(shift));
+	return gmp_jacobi(shift, shift);
 }
 
 sub probab_prime {
 	my $x = shift;
 	my $reps = shift;
-	return gmp_probab_prime(promote($x), $reps);
+	return gmp_probab_prime($x, $reps);
 }
 
 sub op_add {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return add_two(promote($n), promote($m));
+	return add_two($n, $m);
 }
 
 sub op_sub {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return sub_two(promote($n), promote($m));
+	return sub_two($n, $m);
 }
 
 sub op_mul {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return mul_two(promote($n), promote($m));
+	return mul_two($n, $m);
 }
 
 sub op_div {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return div_two(promote($n), promote($m));
+	return div_two($n, $m);
 }
 
 sub bdiv {
-	return bdiv_two(promote(shift), promote(shift));
+	return bdiv_two(shift, shift);
 }
 
 
 sub op_mod {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return mod_two(promote($n), promote($m));
+	return mod_two($n, $m);
 }
 
 
@@ -202,51 +198,51 @@ sub op_mod {
 sub op_cmp {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return cmp_two(stringify(promote($n)), stringify(promote($m)));
+	return cmp_two(stringify($n), stringify($m));
 }
 
 sub op_spaceship {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	my $x = cmp_two(promote($n), promote($m));
+	my $x = cmp_two($n, $m);
 	return $x < 0 ? -1 : $x > 0 ? 1 : 0;
 }
 
 sub op_pow {
 	my ($m, $n) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return pow_two(promote($m), int($n));
+	return pow_two($m, int($n));
 }
 
 
 sub op_and {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return and_two(promote($n), promote($m));
+	return and_two($n, $m);
 }
 
 sub op_xor {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return xor_two(promote($n), promote($m));
+	return xor_two($n, $m);
 }
 
 sub op_or {
 	my ($n, $m) = @_;
 	($n, $m) = ($m, $n) if $_[2];
-	return or_two(promote($n), promote($m));
+	return or_two($n, $m);
 }
 
 sub bior {
-	return or_two(promote(shift), promote(shift));
+	return or_two(shift, shift);
 }
 
 sub band {
-	return and_two(promote(shift), promote(shift));
+	return and_two(shift, shift);
 }
 
 sub bxor {
-	return xor_two(promote(shift), promote(shift));
+	return xor_two(shift, shift);
 }
 
 sub bfac {
