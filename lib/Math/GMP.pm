@@ -32,24 +32,25 @@ use 5.006;
 use Carp;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK $AUTOLOAD);
 
-use overload
-	'""'  =>   \&stringify,
-	'0+'  =>   \&intify,
+use overload (
+	'""'  =>   sub { stringify($_[0]) },
+	'0+'  =>   sub { intify($_[0]) },
 
-	'<=>'  =>  \&op_spaceship,
-	'cmp'  =>  \&op_cmp,
+	'<=>' =>   \&op_spaceship,
+	'=='  =>   \&op_eq,
 
 	'+'   =>   \&op_add,
 	'-'   =>   \&op_sub,
 
-	'&'   =>   \&op_and,
-	'^'   =>   \&op_xor,
-	'|'   =>   \&op_or,
+	'&'   =>   \&band,
+	'^'   =>   \&bxor,
+	'|'   =>   \&bior,
 
 	'%'   =>   \&op_mod,
-	'**'   =>  \&op_pow,
+	'**'  =>   sub { $_[2] ? op_pow($_[1], $_[0]) : op_pow($_[0], $_[1]) },
 	'*'   =>   \&op_mul,
-	'/'   =>   \&op_div;
+	'/'   =>   \&op_div,
+);
 
 require Exporter;
 require DynaLoader;
@@ -117,6 +118,7 @@ sub new {
 BEGIN
 	{
 		*DESTROY = \&Math::GMP::destroy;
+		*gcd = \&bgcd;
 	}
 
 sub add {
@@ -126,131 +128,6 @@ sub add {
 	add_to_self($ret, shift) while @_;
 
 	return $ret;
-}
-
-sub stringify {
-	return Math::GMP::stringify_gmp($_[0]);
-}
-
-sub intify {
-	return Math::GMP::intify_gmp($_[0]);
-}
-
-sub gcd {
-	return gcd_two(shift, shift);
-}
-
-sub bgcd {
-	return gcd_two(shift, shift);
-}
-
-sub legendre {
-	return gmp_legendre(shift, shift);
-}
-
-sub jacobi {
-	return gmp_jacobi(shift, shift);
-}
-
-sub probab_prime {
-	my $x = shift;
-	my $reps = shift;
-	return gmp_probab_prime($x, $reps);
-}
-
-sub op_add {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return add_two($n, $m);
-}
-
-sub op_sub {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return sub_two($n, $m);
-}
-
-sub op_mul {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return mul_two($n, $m);
-}
-
-sub op_div {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return div_two($n, $m);
-}
-
-sub bdiv {
-	return bdiv_two(shift, shift);
-}
-
-
-sub op_mod {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return mod_two($n, $m);
-}
-
-
-
-sub op_cmp {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return cmp_two(stringify($n), stringify($m));
-}
-
-sub op_spaceship {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	my $x = cmp_two($n, $m);
-	return $x < 0 ? -1 : $x > 0 ? 1 : 0;
-}
-
-sub op_pow {
-	my ($m, $n) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return pow_two($m, int($n));
-}
-
-
-sub op_and {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return and_two($n, $m);
-}
-
-sub op_xor {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return xor_two($n, $m);
-}
-
-sub op_or {
-	my ($n, $m) = @_;
-	($n, $m) = ($m, $n) if $_[2];
-	return or_two($n, $m);
-}
-
-sub bior {
-	return or_two(shift, shift);
-}
-
-sub band {
-	return and_two(shift, shift);
-}
-
-sub bxor {
-	return xor_two(shift, shift);
-}
-
-sub bfac {
-	return gmp_fac(int(shift));
-}
-
-sub fibonacci {
-	return gmp_fib(int(shift));
 }
 
 __END__

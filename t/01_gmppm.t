@@ -51,16 +51,16 @@ while (defined($line = shift @data)) {
 		$try .= 'Math::GMP::gmp_sqrt($x);';
 	}
 	elsif ($f eq 'uintify') {
-		$try .= "Math::GMP::uintify_gmp(\$x);";
+		$try .= "Math::GMP::uintify(\$x);";
 		$ans = pop(@args) if ($Config{longsize} == 4 && scalar @args > 1);
 	}
 	elsif ($f eq 'intify') {
-		$try .= "Math::GMP::intify_gmp(\$x);";
+		$try .= "Math::GMP::intify(\$x);";
 		$ans = pop(@args) if ($Config{longsize} == 4 && scalar @args > 1);
 	}
 	elsif ($f eq 'probab_prime') {
 		my $rets = $args[1];
-		$try .= "Math::GMP::gmp_probab_prime(\$x,$rets);";
+		$try .= "Math::GMP::probab_prime(\$x,$rets);";
 	}
 	elsif ($f eq 'new_from_base') {
 		$try .= "\$x;";
