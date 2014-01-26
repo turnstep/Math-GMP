@@ -156,7 +156,7 @@ in speed improvements.
 
 The downside is that this module requires a C compiler to install -- a
 small tradeoff in most cases. Also, this module is not 100% compatible
-to Math::BigInt.
+with Math::BigInt.
 
 A Math::GMP object can be used just as a normal numeric scalar would
 be -- the module overloads most of the normal arithmetic operators to
@@ -201,7 +201,7 @@ Calculates the factorial of $x and modifies $x to contain the result.
   $x = Math::GMP->new(6);
   $x->band(3);      # 0b110 & 0b11 = 1
 
-Calculates the bit-wise AND of it's two arguments and modifies the first
+Calculates the bit-wise AND of its two arguments and modifies the first
 argument.
 
 =head2 bxor
@@ -209,7 +209,7 @@ argument.
   $x = Math::GMP->new(6);
   $x->bxor(3);      # 0b110 & 0b11 = 0b101
 
-Calculates the bit-wise XOR of it's two arguments and modifies the first
+Calculates the bit-wise XOR of its two arguments and modifies the first
 argument.
 
 =head2 bior
@@ -217,7 +217,7 @@ argument.
   $x = Math::GMP->new(6);
   $x->bior(3);      # 0b110 & 0b11 = 0b111
 
-Calculates the bit-wise OR of it's two arguments and modifies the first
+Calculates the bit-wise OR of its two arguments and modifies the first
 argument.
 
 =head2 bgcd
@@ -225,7 +225,7 @@ argument.
   $x = Math::GMP->new(6);
   $x->bgcd(4);      # 6 / 2 = 2, 4 / 2 = 2 => 2
 
-Calculates the Greatest Common Divisior of it's two arguments and returns the result.
+Returns the Greatest Common Divisor of the two arguments.
 
 =head2 blcm
 
@@ -236,7 +236,21 @@ Returns the Least Common Multiple of the two arguments.
 
 =head2 legendre
 
+  $x = Math::GMP->new(6);
+  $x->legendre(3);
+
+Returns the value of the Legendre symbol ($x/$y). The value is defined only
+when $y is an odd prime; when the value is not defined, this currently
+returns 0 (but that may change in the future).
+
 =head2 jacobi
+
+  $x = Math::GMP->new(6);
+  $x->jacobi(3);
+
+Returns the value of the Jacobi symbol ($x/$y). The value is defined only
+when $y is odd; when the value is not defined, this currently returns 0
+(but that may change in the future).
 
 =head2 fibonacci
 
@@ -249,9 +263,9 @@ Calculates the n'th number in the Fibonacci sequence.
   $x = Math::GMP->new(7);
   $x->probab_prime(10);
 
-Probabilistically Determines if the number is a prime. Argument is the number
+Probabilistically determines if the number is a prime. Argument is the number
 of checks to perform. Returns 0 if the number is definitely not a prime,
-1 if it may be, and 2 if it is definitely is a prime.
+1 if it may be, and 2 if it definitely is a prime.
 
 =head1 BUGS
 
@@ -275,7 +289,7 @@ with it:
 
   use Math::BigInt lib => 'GMP';
 
-If Math::GMP is not installed, it will fall back to it's own Perl
+If Math::GMP is not installed, it will fall back to its own Perl
 implementation.
 
 See L<Math::BigInt> and L<Math::BigInt::GMP> or
