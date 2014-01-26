@@ -114,6 +114,9 @@ while (defined($line = shift @data)) {
 		elsif ($f eq 'blcm') {
 			$try .= "Math::GMP::blcm(\$x, \$y);";
 		}
+		elsif ($f eq 'bmodinv') {
+			$try .= "Math::GMP::bmodinv(\$x, \$y);";
+		}
 		elsif ($f eq 'sizeinbase') {
 			$try .= "Math::GMP::sizeinbase_gmp(\$x, \$y);";
 		}
@@ -460,6 +463,12 @@ i+35500000:113:33
 +3:2:6
 +100:625:2500
 +75600:5402250:129654000
+&bmodinv
++0:1:0
++1:1:0
++2:3:2
++5:7:3
++999:1000:999
 &new_from_base
 0xff:255
 0x2395fa:2332154

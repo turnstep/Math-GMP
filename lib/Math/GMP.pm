@@ -234,6 +234,15 @@ Returns the Greatest Common Divisor of the two arguments.
 
 Returns the Least Common Multiple of the two arguments.
 
+=head2 bmodinv
+
+  $x = Math::GMP->new(5);
+  $x->bmodinv(7);   # 5 * 3 == 1 (mod 7) => 3
+
+Returns the modular inverse of $x (mod $y), if defined. This currently
+returns 0 if there is no inverse (but that may change in the future).
+Behaviour is undefined when $y is 0.
+
 =head2 bsqrt
 
   $x = Math::GMP->new(6);

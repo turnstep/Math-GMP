@@ -356,6 +356,18 @@ op_mod(m,n,swap)
   OUTPUT:
     RETVAL
 
+mpz_t *
+bmodinv(m,n)
+	mpz_t *		m
+	mpz_t *		n
+
+  CODE:
+    RETVAL = malloc (sizeof(mpz_t));
+    mpz_init(*RETVAL);
+    mpz_invert(*RETVAL, *m, *n);
+  OUTPUT:
+    RETVAL
+
 
 int
 op_spaceship(m,n,swap)
