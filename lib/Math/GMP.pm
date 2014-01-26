@@ -234,6 +234,13 @@ Returns the Greatest Common Divisor of the two arguments.
 
 Returns the Least Common Multiple of the two arguments.
 
+=head2 bsqrt
+
+  $x = Math::GMP->new(6);
+  $x->bsqrt();      # int(sqrt(6)) => 2
+
+Returns the integer square root of its argument.
+
 =head2 legendre
 
   $x = Math::GMP->new(6);

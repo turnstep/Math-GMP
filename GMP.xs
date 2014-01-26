@@ -541,7 +541,7 @@ gmp_tstbit(m,n)
     RETVAL
 
 mpz_t *
-gmp_sqrt(m)
+bsqrt(m)
 	mpz_t *		m
 
   CODE:

@@ -48,7 +48,7 @@ while (defined($line = shift @data)) {
 		$try .= "abs \$x;";
 	}
 	elsif ($f eq "square_root") {
-		$try .= 'Math::GMP::gmp_sqrt($x);';
+		$try .= 'Math::GMP::bsqrt($x);';
 	}
 	elsif ($f eq 'uintify') {
 		$try .= "Math::GMP::uintify(\$x);";
