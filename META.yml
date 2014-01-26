@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name                        : Math-GMP
-version                     : 2.06
+version                     : 2.06_01
 abstract                    : High speed arbitrary size integer math
 author:              
   - Chip Turner <cturner@pattern.net>
@@ -26,7 +26,7 @@ recommends:
 provides:
   Math::GMP:
     file                    : GMP.pm
-    version                 : 2.06
+    version                 : 2.06_01
 
 keywords:
   - math

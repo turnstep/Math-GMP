@@ -1,5 +1,9 @@
 Revision history for Perl extension Math::GMP.
 
+2.06_01  2014-01-26 Hugo
+    - Go direct to XS for more speed
+    - add lcm/blcm, bsqrt, bmodinv
+
 2.06  2009-09-17 Greg
     - Make Makefile.PL more forgiving of gmp library locations. (CPAN bug #46323)
     - Update link to libgmp.org in INSTALL file (CPAN bug #46324)
