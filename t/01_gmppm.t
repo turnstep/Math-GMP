@@ -111,6 +111,9 @@ while (defined($line = shift @data)) {
 		elsif ($f eq 'gcd') {
 			$try .= "Math::GMP::gcd(\$x, \$y);";
 		}
+		elsif ($f eq 'blcm') {
+			$try .= "Math::GMP::blcm(\$x, \$y);";
+		}
 		elsif ($f eq 'sizeinbase') {
 			$try .= "Math::GMP::sizeinbase_gmp(\$x, \$y);";
 		}
@@ -448,6 +451,15 @@ i+35500000:113:33
 +3:2:1
 +100:625:25
 +4096:81:1
+&blcm
++0:0:0
++0:1:0
++1:0:0
++1:1:1
++2:3:6
++3:2:6
++100:625:2500
++75600:5402250:129654000
 &new_from_base
 0xff:255
 0x2395fa:2332154

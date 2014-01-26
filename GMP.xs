@@ -445,6 +445,19 @@ bgcd(m,n)
 
 
 mpz_t *
+blcm(m,n)
+	mpz_t *		m
+	mpz_t *		n
+
+  CODE:
+    RETVAL = malloc (sizeof(mpz_t));
+    mpz_init(*RETVAL);
+    mpz_lcm(*RETVAL, *m, *n);
+  OUTPUT:
+    RETVAL
+
+
+mpz_t *
 fibonacci(n)
 	long		n
 

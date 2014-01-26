@@ -119,6 +119,7 @@ BEGIN
 	{
 		*DESTROY = \&Math::GMP::destroy;
 		*gcd = \&bgcd;
+		*lcm = \&blcm;
 	}
 
 sub add {
@@ -225,6 +226,13 @@ argument.
   $x->bgcd(4);      # 6 / 2 = 2, 4 / 2 = 2 => 2
 
 Calculates the Greatest Common Divisior of it's two arguments and returns the result.
+
+=head2 blcm
+
+  $x = Math::GMP->new(6);
+  $x->blcm(4);      # 6 * 2 = 12, 4 * 3 = 12 => 12
+
+Returns the Least Common Multiple of the two arguments.
 
 =head2 legendre
 
