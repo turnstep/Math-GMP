@@ -1,0 +1,14 @@
+mpz_t *		MPZ
+
+INPUT
+MPZ
+        if (sv_derived_from($arg, \"Math::GMP\")) {
+            IV tmp = SvIV((SV*)SvRV($arg));
+            $var = ($type) tmp;
+        }
+        else
+            croak(\"$var is not of type Math::GMP\")
+
+OUTPUT
+MPZ
+	sv_setref_pv($arg, \"Math::GMP\", (void*)$var);

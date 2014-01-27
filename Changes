@@ -1,0 +1,58 @@
+Revision history for Perl extension Math::GMP.
+
+2.06  2009-09-17 Greg
+    - Make Makefile.PL more forgiving of gmp library locations. (CPAN bug #46323)
+    - Update link to libgmp.org in INSTALL file (CPAN bug #46324)
+
+2.05  2008-10-06 Greg
+    - New maintainer: Greg Sabino Mullane
+    - Allow tests to work on 64-bit platforms. Patch from Flo.
+      (CPAN bugs #5960, #30327, #27641, #12751, #15459)
+    - Add support for probab_prime function. Patch by shlomif@iglu.org.il.
+      (CPAN bug #6184)
+    - Get smarter about detecting lack of GMP libraries.
+      (CPAN bug #18709)
+    - Add META.yml and some more tests.
+
+2.04  2004-09-28 cturner
+	- added patch from Nicholas Oxhøj for constructing
+	  with different bases (nicholas@oxhoej.dk) (CPAN bug #4472)
+
+2.03  2002-02-16 Tels
+	- added internal functions gmp_copy, gmp_tstbit, gmp_sqrt
+	- moved test.pl to t/gmppmt, made it use Test and use strict
+	- moved GMP.pm to lib/Math/GMP.pm
+	- documented some of the public methods
+	- fixed README
+	- added INSTALL file
+
+2.02  Sat Feb 15 16:10:00 2002 Tels
+	- added internal functions gmp_fac, gmp_fib, and_two, or_two, xor_two
+	- added band, bior, bxor, bfac
+	- added overload for &, ^ and |
+	- tests for new functions
+
+2.00  Fri Feb 08 16:00:00 2002 cturner
+	- remove gmp inside of package, performance improvements, some new ops
+
+1.07  2001-04-22 cturner
+
+1.06  2001-04-10 cturner
+
+1.05  2001-02-23 cturner
+
+1.04  2001-02-13 cturner
+
+1.03  2001-01-25 cturner
+
+1.02  2001-01-20 cturner
+
+1.01  2000-03-21 cturner
+
+1.00  2000-02-25 cturner
+
+0.9   1999-09-19 cturner
+
+0.01  Fri Sep 17 21:07:40 1999 cturner
+	- original version; created by h2xs 1.19
+
