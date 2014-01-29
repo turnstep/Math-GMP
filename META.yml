@@ -13,7 +13,8 @@ dynamic_config              : 1
 
 build_requires:
   Test::More                : 0.61
-recommends:
+build_recommends:
+  Module::Signature         : 0.50
   File::Comments            : 0
   Module::Signature         : 0.50
   Perl::Critic              : 0
