@@ -167,8 +167,8 @@ while (defined($line = shift @data)) {
 # Test of bfac as described in the pod
 
 $x = Math::GMP->new(5);
-$x->bfac();
-is(int $x, 120, 'gfac gives expected result');
+my $val = $x->bfac();
+is(int $val, 120, 'gfac gives expected result');
 
 # some assorted tests for internal functions
 

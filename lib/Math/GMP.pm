@@ -192,9 +192,10 @@ be represented in the base specified by the second parameter.
 =head2 bfac
 
   $x = Math::GMP->new(5);
-  $x->bfac();      # 1*2*3*4*5 = 120
+  my $val = $x->bfac();      # 1*2*3*4*5 = 120
+  print $val;
 
-Calculates the factorial of $x and modifies $x to contain the result.
+Calculates the factorial of $x and returns the result.
 
 =head2 band
 
