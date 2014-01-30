@@ -11,7 +11,7 @@ my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line);
 
 @data = <DATA>;
 @tests = grep { ! /^&/ } @data;
-plan tests => (scalar @tests + 2);
+plan tests => (scalar @tests + 3);
 
 while (defined($line = shift @data)) {
 	chomp $line;
@@ -163,6 +163,12 @@ while (defined($line = shift @data)) {
 	is( "$ans1", $ans, "Test worked: $try");
 
 }
+
+# Test of bfac as described in the pod
+
+$x = Math::GMP->new(5);
+$x->bfac();
+is(int $x, 120, 'gfac gives expected result');
 
 # some assorted tests for internal functions
 
