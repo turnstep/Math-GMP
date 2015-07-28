@@ -1,0 +1,9 @@
+GMP.bs
+GMP.c
+GMP.o
+MYMETA.json
+MYMETA.yml
+Makefile
+Math-GMP-*
+blib
+pm_to_blib
