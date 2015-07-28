@@ -3,6 +3,7 @@
 ^blib
 ~$
 ^MANIFEST\.SKIP$
+^Math-GMP-[0-9\.]+/
 \.tmp$
 ^tmp/*
 RCS/*
