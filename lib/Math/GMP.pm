@@ -140,7 +140,7 @@ Math::GMP - High speed arbitrary size integer math
 =head1 SYNOPSIS
 
   use Math::GMP;
-  my $n = new Math::GMP 2;
+  my $n = Math::GMP->new('2');
 
   $n = $n ** (256*1024);
   $n = $n - 1;

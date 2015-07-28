@@ -26,10 +26,10 @@ while (defined($line = shift @data)) {
 		$try = "\$x = $1;";
 	}
 	elsif ( $args[0] =~ /^b([-+]?.+),([0-9]+)$/ ) {
-		$try = "\$x = new Math::GMP \"$1\", $2;";
+		$try = "\$x = Math::GMP->new(\"$1\", $2);";
 	}
 	else {
-		$try = "\$x = new Math::GMP \"$args[0]\";";
+		$try = "\$x = Math::GMP->new(\"$args[0]\");";
 	}
 
 	if ($f eq "bnorm") {
@@ -70,7 +70,7 @@ while (defined($line = shift @data)) {
 			$try .= "\$y = $1;";
 		}
 		else {
-			$try .= "\$y = new Math::GMP \"$args[1]\";";
+			$try .= "\$y = Math::GMP->new(\"$args[1]\");";
 		}
 		if ($f eq 'bcmp') {
 			$try .= "\$x <=> \$y;";
@@ -149,7 +149,7 @@ while (defined($line = shift @data)) {
 				$try .= "\$z = $1;";
 			}
 			else {
-				$try .= "\$z = new Math::GMP \"$args[2]\";";
+				$try .= "\$z = Math::GMP->new(\"$args[2]\");";
 			}
 			if ($f eq 'powm') {
 				$try .= "Math::GMP::powm_gmp(\$x, \$y, \$z);";
