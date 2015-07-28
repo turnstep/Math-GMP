@@ -535,6 +535,20 @@ blshift(m,n,swap)
     RETVAL
 
 mpz_t *
+brshift(m,n,swap)
+	mpz_t *		m
+	mpz_t *		n
+	bool		swap
+
+  CODE:
+    SWAP_GMP
+    RETVAL = malloc (sizeof(mpz_t));
+    mpz_init(*RETVAL);
+    mpz_div_2exp(*RETVAL, *m, mpz_get_ui(*n));
+  OUTPUT:
+    RETVAL
+
+mpz_t *
 bfac(n)
 	long		n
 
