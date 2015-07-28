@@ -8,6 +8,9 @@ Revision history for Perl extension Math::GMP.
         - Fixes RT #101443
             - https://rt.cpan.org/Ticket/Display.html?id=101443
         - Modified patch applied by Shlomif.
+    - Add tests from DANAJ for large numbers in some functions.
+        - RT #92641
+            - https://rt.cpan.org/Ticket/Display.html?id=92641
 
 2.07  2014-01-26 Hugo
     - Go direct to XS for more speed
