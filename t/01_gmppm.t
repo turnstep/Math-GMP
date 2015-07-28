@@ -11,7 +11,7 @@ my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line);
 
 @data = <DATA>;
 @tests = grep { ! /^&/ } @data;
-plan tests => (scalar @tests + 3);
+plan tests => (scalar @tests + 6);
 
 while (defined($line = shift @data)) {
 	chomp $line;
@@ -176,6 +176,17 @@ $x = Math::GMP->new('123');
 $y = Math::GMP::gmp_copy($x);
 is (ref($y),ref($x), 'refs are the same');
 is ("$y",'123', 'gmp_copy gives correct value');
+
+{
+	# boolean check should not fall back to truncating intify
+	my $s = '1' . ('0' x 70);
+	my $i1 = Math::GMP->new($s);
+	is ($s, "$i1", 'new 1e70 from string is preserved');
+	my $bool = $i1 ? 1 : 0;
+	is ($bool, 1, '1e70 is boolean TRUE');
+	my $i2 = Math::GMP->new($i1);  # has internal boolean check
+	is ($s, "$i2", 'new 1e70 from object is preserved');
+}
 
 # all done
 
