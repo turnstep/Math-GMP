@@ -1,5 +1,8 @@
 Revision history for Perl extension Math::GMP.
 
+2.08  Unknown Shlomif
+    - Add a link to the version control repository at various places.
+
 2.07  2014-01-26 Hugo
     - Go direct to XS for more speed
     - add lcm/blcm, bsqrt, bmodinv

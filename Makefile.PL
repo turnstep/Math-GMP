@@ -10,6 +10,18 @@ my $output = WriteMakefile
 	 'VERSION_FROM' => 'lib/Math/GMP.pm',
 	 'LIBS'	        => ['-lgmp'],
 	 'NO_META'      => 1,
+     META_MERGE        => {
+         "meta-spec" => { version => 2 },
+         resources => {
+             repository => {
+                 type => 'git',
+                 url => 'git://github.com/turnstep/Math-GMP.git',
+                 web => 'https://github.com/turnstep/Math-GMP',
+             },
+
+         },
+
+     },
 	 );
 
 if (!exists $output->{EXTRALIBS} or $output->{EXTRALIBS} !~ /gmp/) {

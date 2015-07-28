@@ -298,6 +298,12 @@ numbers not being prefixed by a '+' sign.  This is intentional.
 There are also some things missing, and not everything might work as
 expected.
 
+=head1 VERSION CONTROL
+
+The version control repository of this module is a git repository hosted
+on GitHub at: L<https://github.com/turnstep/Math-GMP>. Pull requests are
+welcome.
+
 =head1 SEE ALSO
 
 Math::BigInt has a new interface to use a different library than the
