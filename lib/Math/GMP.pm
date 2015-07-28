@@ -47,6 +47,8 @@ use overload (
 	'^'   =>   \&bxor,
 	'|'   =>   \&bior,
 
+    '<<' =>    \&blshift,
+
 	'%'   =>   \&op_mod,
 	'**'  =>   sub { $_[2] ? op_pow($_[1], $_[0]) : op_pow($_[0], $_[1]) },
 	'*'   =>   \&op_mul,
@@ -221,6 +223,15 @@ argument.
 
 Calculates the bit-wise OR of its two arguments and modifies the first
 argument.
+
+=head2 blshift
+
+  $x = Math::GMP->new(0b11);
+  my $result = $x->blshift(4, 0);
+  # $result = 0b11 << 4 = 0b110000
+
+Calculates the bit-wise left-shift of its two arguments and returns the
+result. Second argument is swap.
 
 =head2 bgcd
 

@@ -521,6 +521,20 @@ bior(m,n,swap)
     RETVAL
 
 mpz_t *
+blshift(m,n,swap)
+	mpz_t *		m
+	mpz_t *		n
+	bool		swap
+
+  CODE:
+    SWAP_GMP
+    RETVAL = malloc (sizeof(mpz_t));
+    mpz_init(*RETVAL);
+    mpz_mul_2exp(*RETVAL, *m, mpz_get_ui(*n));
+  OUTPUT:
+    RETVAL
+
+mpz_t *
 bfac(n)
 	long		n
 

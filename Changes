@@ -1,5 +1,8 @@
 Revision history for Perl extension Math::GMP.
 
+2.09  Unknown Shlomif
+    - Add the binary-left-shift / << operator.
+
 2.08  2015-07-28 Shlomif
     - Add a link to the version control repository at various places.
     - Get rid of indirect object notation in the code and the examples.
