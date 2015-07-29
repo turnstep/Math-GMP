@@ -4,6 +4,7 @@ Revision history for Perl extension Math::GMP.
     - Add the binary-left-shift / << operator.
     - Add the binary-right-shift / >> operator.
     - Convert the build system to Dist-Zilla to ease future maintenance.
+    - Add a call to Devel::CheckLib for finding the "gmp.h" header.
 
 2.08  2015-07-28 Shlomif
     - Add a link to the version control repository at various places.
