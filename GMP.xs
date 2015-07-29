@@ -84,7 +84,7 @@ sv2gmp(SV* sv)
 }
 
 
-MODULE = Math::GMP		PACKAGE = Math::GMP		
+MODULE = Math::GMP		PACKAGE = Math::GMP
 PROTOTYPES: ENABLE
 
 
@@ -128,7 +128,7 @@ stringify(n)
 
   PREINIT:
     int len;
-    
+
   CODE:
     len = mpz_sizeinbase(*n, 10);
     {
@@ -190,7 +190,7 @@ add_ui_gmp(n, v)
     mpz_add_ui(*n, *n, v);
 
 
-long 
+long
 intify(n)
 	mpz_t *	n
 

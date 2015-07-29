@@ -343,7 +343,7 @@ L<Math::BigInt::Pari> or L<Math::BigInt::BitVect>.
 =head1 AUTHOR
 
 Chip Turner <chip@redhat.com>, based on the old Math::BigInt by Mark Biggar
-and Ilya Zakharevich.  Further extensive work provided by Tels 
+and Ilya Zakharevich.  Further extensive work provided by Tels
 <tels@bloodgate.com>.
 
 
