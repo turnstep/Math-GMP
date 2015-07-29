@@ -3,6 +3,7 @@ Revision history for Perl extension Math::GMP.
 2.09  Unknown Shlomif
     - Add the binary-left-shift / << operator.
     - Add the binary-right-shift / >> operator.
+    - Convert the build system to Dist-Zilla to ease future maintenance.
 
 2.08  2015-07-28 Shlomif
     - Add a link to the version control repository at various places.
