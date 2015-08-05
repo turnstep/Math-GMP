@@ -112,7 +112,10 @@ sub new {
 	if ($base) {
 		$ret = Math::GMP::new_from_scalar_with_base($ival, $base);
 	} else {
-		$ival = 0 if $ival =~ /[^\d\-xA-Fa-f]/;
+		if ($ival =~ /[^\d\-xA-Fa-f]/)
+        {
+            die "Argument to Math::GMP->new is not a string representing an integer";
+        }
 		$ret = Math::GMP::new_from_scalar($ival);
 	}
 

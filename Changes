@@ -1,5 +1,10 @@
 Revision history for Perl extension Math::GMP.
 
+2.10  Unknown Shlomif
+    - Throw an exception on invalid input to Math::GMP->new;
+        - https://rt.cpan.org/Ticket/Display.html?id=27521
+        - Thanks to SISYPHUS for the report.
+
 2.09  2015-07-29 Shlomif
     - Add the binary-left-shift / << operator.
     - Add the binary-right-shift / >> operator.
