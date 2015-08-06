@@ -211,10 +211,11 @@ Calculates the factorial of $x and returns the result.
 Calculates the bit-wise AND of its two arguments and returns the result.
 $swap should be provided but is ignored.
 
-=head2 bxor
+=head2 my $ret = $x->bxor($y, $swap);
 
   $x = Math::GMP->new(6);
-  $x->bxor(3);      # 0b110 & 0b11 = 0b101
+  my $val = $x->bxor(3, 0);      # 0b110 ^ 0b11 = 0b101
+  print $val;
 
 Calculates the bit-wise XOR of its two arguments and modifies the first
 argument.
