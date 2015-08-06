@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 6;
+use Test::More tests => 8;
 
 use Math::GMP;
 
@@ -41,4 +41,15 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 0b110, "ret = x->bxor is correct.");
+}
+
+{
+    my $x = Math::GMP->new(0b1100);
+    my $ret = $x->bior(0b1010, 0);
+
+    # TEST
+    is ($x.'', 0b1100, "x did not change after x->bior");
+
+    # TEST
+    is ($ret.'', 0b1110, "ret = x->bior is correct.");
 }

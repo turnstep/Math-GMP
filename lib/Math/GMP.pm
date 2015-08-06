@@ -217,16 +217,15 @@ $swap should be provided but is ignored.
   my $val = $x->bxor(3, 0);      # 0b110 ^ 0b11 = 0b101
   print $val;
 
-Calculates the bit-wise XOR of its two arguments and modifies the first
-argument.
+Calculates the bit-wise XOR of its two arguments and returns the result.
 
-=head2 bior
+=head2 my $ret = $x->bior($y, $swap);
 
   $x = Math::GMP->new(6);
-  $x->bior(3);      # 0b110 & 0b11 = 0b111
+  my $val = $x->bior(3);      # 0b110 | 0b11 = 0b111
+  print $val;
 
-Calculates the bit-wise OR of its two arguments and modifies the first
-argument.
+Calculates the bit-wise OR of its two arguments and returns the result.
 
 =head2 blshift
 
