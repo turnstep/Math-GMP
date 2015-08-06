@@ -202,13 +202,14 @@ be represented in the base specified by the second parameter.
 
 Calculates the factorial of $x and returns the result.
 
-=head2 band
+=head2 my $val = $x->band($y, $swap)
 
   $x = Math::GMP->new(6);
-  $x->band(3);      # 0b110 & 0b11 = 1
+  my $val = $x->band(3, 0);      # 0b110 & 0b11 = 1
+  print $val;
 
-Calculates the bit-wise AND of its two arguments and modifies the first
-argument.
+Calculates the bit-wise AND of its two arguments and returns the result.
+$swap should be provided but is ignored.
 
 =head2 bxor
 

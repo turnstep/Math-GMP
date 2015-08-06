@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 2;
+use Test::More tests => 4;
 
 use Math::GMP;
 
@@ -21,3 +21,13 @@ use Math::GMP;
     is ($val.'', '120', 'val=x->bfac is correct.');
 }
 
+{
+    my $x = Math::GMP->new(0b1100);
+    my $ret = $x->band(0b1010, 0);
+
+    # TEST
+    is ($x.'', 0b1100, "x->band did not change");
+
+    # TEST
+    is ($ret.'', 0b1000, "ret = x->band is correct.");
+}
