@@ -247,8 +247,10 @@ result. Second argument is swap.
 
 =head2 bgcd
 
-  $x = Math::GMP->new(6);
-  $x->bgcd(4);      # 6 / 2 = 2, 4 / 2 = 2 => 2
+  my $x = Math::GMP->new(6);
+  my $gcd = $x->bgcd(4);
+  # 6 / 2 = 2, 4 / 2 = 2 => 2
+  print $gcd
 
 Returns the Greatest Common Divisor of the two arguments.
 

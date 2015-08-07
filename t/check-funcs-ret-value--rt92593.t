@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 8;
+use Test::More tests => 10;
 
 use Math::GMP;
 
@@ -52,4 +52,15 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 0b1110, "ret = x->bior is correct.");
+}
+
+{
+    my $x = Math::GMP->new(1000 * 3);
+    my $ret = $x->bgcd(1000 * 7);
+
+    # TEST
+    is ($x.'', 1000 * 3, "x did not change after x->bgcd");
+
+    # TEST
+    is ($ret.'', 1000, "ret = x->bgcd(y) is correct.");
 }
