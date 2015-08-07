@@ -309,6 +309,13 @@ of checks to perform. Returns 0 if the number is definitely not a prime,
 Adds to $x and mutates it in-place. $n must be a regular non-GMP, positive,
 integer.
 
+=head2 ($quotient, $remainder) = $x->bdiv($y);
+
+  my $x = Math::GMP->new(7);
+  my ($quo, $rem) = $x->bdiv(3);
+
+Returns both the division and the modulo of an integer division operation.
+
 =head1 BUGS
 
 As of version 1.0, Math::GMP is mostly compatible with the old

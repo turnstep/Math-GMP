@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 24;
+use Test::More tests => 27;
 
 use Math::GMP;
 
@@ -144,4 +144,18 @@ use Math::GMP;
 
     # TEST
     is ($x.'', '1' . ('0' x (100-3)) . '500', "x was mutated after add_ui_gmp");
+}
+
+{
+    my $x = Math::GMP->new(7);
+    my ($quo, $rem) = $x->bdiv(3);
+
+    # TEST
+    is ($x.'', 7, "x did not change after x->bdiv");
+
+    # TEST
+    is ($quo.'', 2, "x->bdiv[quo]");
+
+    # TEST
+    is ($rem.'', 1, "x->bdiv[rem]");
 }
