@@ -39,6 +39,7 @@ not_here(char *s)
     return -1;
 }
 
+#if 0
 static double
 constant(char *name, int arg)
 {
@@ -52,6 +53,7 @@ not_there:
     errno = ENOENT;
     return 0;
 }
+#endif
 
 mpz_t *
 pv2gmp(char* pv)
@@ -86,12 +88,6 @@ sv2gmp(SV* sv)
 
 MODULE = Math::GMP		PACKAGE = Math::GMP
 PROTOTYPES: ENABLE
-
-
-double
-constant(name,arg)
-	char *		name
-	int		arg
 
 mpz_t *
 new_from_scalar(s)

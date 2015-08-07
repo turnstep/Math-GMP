@@ -67,6 +67,8 @@ require AutoLoader;
 
 our $VERSION = '2.09';
 
+=begin Removed
+
 sub AUTOLOAD {
 	# This AUTOLOAD is used to 'autoload' constants from the constant()
 	# XS function.  If a constant is not found then control is passed
@@ -88,6 +90,10 @@ sub AUTOLOAD {
 	*$AUTOLOAD = sub () { $val };
 	goto &$AUTOLOAD;
 }
+
+=end Removed
+
+=cut
 
 bootstrap Math::GMP $VERSION;
 
