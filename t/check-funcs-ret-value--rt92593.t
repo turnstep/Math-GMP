@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 20;
+use Test::More tests => 21;
 
 use Math::GMP;
 
@@ -118,4 +118,11 @@ use Math::GMP;
 
     # TEST
     is ($ret, 0, "ret = x->jacobi(y) is correct.");
+}
+
+{
+    my $x = Math::GMP::fibonacci(200);
+
+    # TEST
+    is ($x.'', '280571172992510140037611932413038677189525', "Math::GMP::fibonacci() works fine");
 }

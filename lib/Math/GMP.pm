@@ -300,7 +300,7 @@ when $y is odd; when the value is not defined, this currently returns 0
 
 =head2 fibonacci
 
-  $x = Math::GMP::fibonacci(16);
+  my $fib = Math::GMP::fibonacci(16);
 
 Calculates the n'th number in the Fibonacci sequence.
 
