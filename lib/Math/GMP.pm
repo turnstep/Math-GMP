@@ -249,15 +249,16 @@ result. Second argument is swap.
 
   my $x = Math::GMP->new(6);
   my $gcd = $x->bgcd(4);
-  # 6 / 2 = 2, 4 / 2 = 2 => 2
+  # 6 / 2 = 3, 4 / 2 = 2 => 2
   print $gcd
 
 Returns the Greatest Common Divisor of the two arguments.
 
 =head2 blcm
 
-  $x = Math::GMP->new(6);
-  $x->blcm(4);      # 6 * 2 = 12, 4 * 3 = 12 => 12
+  my $x = Math::GMP->new(6);
+  my $lcm = $x->blcm(4);      # 6 * 2 = 12, 4 * 3 = 12 => 12
+  print $lcm;
 
 Returns the Least Common Multiple of the two arguments.
 
