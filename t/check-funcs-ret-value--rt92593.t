@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 14;
+use Test::More tests => 16;
 
 use Math::GMP;
 
@@ -85,4 +85,15 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 3, "ret = x->bmodinv(y) is correct.");
+}
+
+{
+    my $x = Math::GMP->new(6);
+    my $ret = $x->bsqrt();
+
+    # TEST
+    is ($x.'', 6, "x did not change after x->bsqrt");
+
+    # TEST
+    is ($ret.'', 2, "ret = x->bsqrt() is correct.");
 }

@@ -274,8 +274,9 @@ Behaviour is undefined when $y is 0.
 
 =head2 bsqrt
 
-  $x = Math::GMP->new(6);
-  $x->bsqrt();      # int(sqrt(6)) => 2
+  my $x = Math::GMP->new(6);
+  my $root = $x->bsqrt();      # int(sqrt(6)) => 2
+  print $root;
 
 Returns the integer square root of its argument.
 
