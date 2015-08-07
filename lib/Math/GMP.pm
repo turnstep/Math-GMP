@@ -264,8 +264,9 @@ Returns the Least Common Multiple of the two arguments.
 
 =head2 bmodinv
 
-  $x = Math::GMP->new(5);
-  $x->bmodinv(7);   # 5 * 3 == 1 (mod 7) => 3
+  my $x = Math::GMP->new(5);
+  my $modinv = $x->bmodinv(7);   # 5 * 3 == 1 (mod 7) => 3
+  print $modinv;
 
 Returns the modular inverse of $x (mod $y), if defined. This currently
 returns 0 if there is no inverse (but that may change in the future).

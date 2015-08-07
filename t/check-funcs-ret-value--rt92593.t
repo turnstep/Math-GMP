@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 12;
+use Test::More tests => 14;
 
 use Math::GMP;
 
@@ -74,4 +74,15 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 1000 * 3 * 3 * 7, "ret = x->blcm(y) is correct.");
+}
+
+{
+    my $x = Math::GMP->new(5);
+    my $ret = $x->bmodinv(7);
+
+    # TEST
+    is ($x.'', 5, "x did not change after x->bmodinv");
+
+    # TEST
+    is ($ret.'', 3, "ret = x->bmodinv(y) is correct.");
 }
