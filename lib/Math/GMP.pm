@@ -283,7 +283,7 @@ Returns the integer square root of its argument.
 =head2 legendre
 
   $x = Math::GMP->new(6);
-  $x->legendre(3);
+  my $ret = $x->legendre(3);
 
 Returns the value of the Legendre symbol ($x/$y). The value is defined only
 when $y is an odd prime; when the value is not defined, this currently

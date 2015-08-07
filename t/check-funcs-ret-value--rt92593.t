@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 16;
+use Test::More tests => 18;
 
 use Math::GMP;
 
@@ -96,4 +96,15 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 2, "ret = x->bsqrt() is correct.");
+}
+
+{
+    my $x = Math::GMP->new(200);
+    my $ret = $x->legendre(3);
+
+    # TEST
+    is ($x.'', 200, "x did not change after x->legendre");
+
+    # TEST
+    is ($ret, -1, "ret = x->legendre(y) is correct.");
 }
