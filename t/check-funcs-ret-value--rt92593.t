@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 23;
+use Test::More tests => 24;
 
 use Math::GMP;
 
@@ -136,4 +136,12 @@ use Math::GMP;
 
     # TEST
     is ($is_prime_verdict, '2', 'probab_prime works.');
+}
+
+{
+    my $x = Math::GMP->new('1'. ('0' x 100));
+    $x->add_ui_gmp(500);
+
+    # TEST
+    is ($x.'', '1' . ('0' x (100-3)) . '500', "x was mutated after add_ui_gmp");
 }

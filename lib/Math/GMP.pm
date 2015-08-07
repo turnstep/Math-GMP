@@ -127,15 +127,6 @@ BEGIN
 		*lcm = \&blcm;
 	}
 
-sub add {
-	croak 'add: not enough arguments, two required' if @_ < 2;
-
-	my $ret = Math::GMP->new(0);
-	add_to_self($ret, shift) while @_;
-
-	return $ret;
-}
-
 __END__
 
 =head1 NAME
@@ -312,6 +303,11 @@ Calculates the n'th number in the Fibonacci sequence.
 Probabilistically determines if the number is a prime. Argument is the number
 of checks to perform. Returns 0 if the number is definitely not a prime,
 1 if it may be, and 2 if it definitely is a prime.
+
+=head2 $x->add_ui_gmp($n)
+
+Adds to $x and mutates it in-place. $n must be a regular non-GMP, positive,
+integer.
 
 =head1 BUGS
 
