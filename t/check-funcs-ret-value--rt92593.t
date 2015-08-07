@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 18;
+use Test::More tests => 20;
 
 use Math::GMP;
 
@@ -107,4 +107,15 @@ use Math::GMP;
 
     # TEST
     is ($ret, -1, "ret = x->legendre(y) is correct.");
+}
+
+{
+    my $x = Math::GMP->new(200);
+    my $ret = $x->jacobi(5);
+
+    # TEST
+    is ($x.'', 200, "x did not change after x->jacobi");
+
+    # TEST
+    is ($ret, 0, "ret = x->jacobi(y) is correct.");
 }

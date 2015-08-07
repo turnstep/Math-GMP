@@ -291,8 +291,8 @@ returns 0 (but that may change in the future).
 
 =head2 jacobi
 
-  $x = Math::GMP->new(6);
-  $x->jacobi(3);
+  my $x = Math::GMP->new(6);
+  my $jacobi_verdict = $x->jacobi(3);
 
 Returns the value of the Jacobi symbol ($x/$y). The value is defined only
 when $y is odd; when the value is not defined, this currently returns 0
