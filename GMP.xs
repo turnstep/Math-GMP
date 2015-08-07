@@ -379,8 +379,9 @@ op_spaceship(m,n,swap)
     int i;
   CODE:
     i = mpz_cmp(*m, *n);
-    if (swap)
-	i = -i;
+    if (swap) {
+        i = -i;
+    }
     RETVAL = (i < 0) ? -1 : (i > 0) ? 1 : 0;
   OUTPUT:
     RETVAL
