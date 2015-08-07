@@ -316,6 +316,10 @@ integer.
 
 Returns both the division and the modulo of an integer division operation.
 
+=head2 constant
+
+For internal use. B<Do not use directly>.
+
 =head1 BUGS
 
 As of version 1.0, Math::GMP is mostly compatible with the old
