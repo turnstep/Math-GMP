@@ -306,8 +306,8 @@ Calculates the n'th number in the Fibonacci sequence.
 
 =head2 probab_prime
 
-  $x = Math::GMP->new(7);
-  $x->probab_prime(10);
+  my $x = Math::GMP->new(7);
+  my $is_prime_verdict = $x->probab_prime(10);
 
 Probabilistically determines if the number is a prime. Argument is the number
 of checks to perform. Returns 0 if the number is definitely not a prime,

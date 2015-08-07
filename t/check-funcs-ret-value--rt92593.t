@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 21;
+use Test::More tests => 23;
 
 use Math::GMP;
 
@@ -125,4 +125,15 @@ use Math::GMP;
 
     # TEST
     is ($x.'', '280571172992510140037611932413038677189525', "Math::GMP::fibonacci() works fine");
+}
+
+{
+    my $x = Math::GMP->new(7);
+    my $is_prime_verdict = $x->probab_prime(10);
+
+    # TEST
+    is ($x.'', '7', "x did not change after x->probab_prime");
+
+    # TEST
+    is ($is_prime_verdict, '2', 'probab_prime works.');
 }
