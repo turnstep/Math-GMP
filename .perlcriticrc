@@ -28,7 +28,7 @@ stop_words = Mullane BigInt gmp tradeoff bfac bxor bior bgcd Divisior returnes l
 [-Lax::RequireEndWithTrueConst]
 [-Miscellanea::RequireRcsKeywords]
 [-Miscellanea::ProhibitUnrestrictedNoCritic]
-[-Modules::ProhibitAutomaticExportation] 
+[-Modules::ProhibitAutomaticExportation]
 [-Modules::ProhibitExcessMainComplexity]
 [-Modules::RequireEndWithOne]
 [-Modules::RequireExplicitInclusion]
