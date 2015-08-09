@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 27;
+use Test::More tests => 29;
 
 use Math::GMP;
 
@@ -158,4 +158,15 @@ use Math::GMP;
 
     # TEST
     is ($rem.'', 1, "x->bdiv[rem]");
+}
+
+{
+    my $x = Math::GMP->new(200);
+    my $ret = $x->div_2exp_gmp(2);
+
+    # TEST
+    is ($x.'', 200, "x did not change after x->div_2exp_gmp");
+
+    # TEST
+    is ($ret.'', 50, "ret = x->div_2exp_gmp(y) is correct.");
 }

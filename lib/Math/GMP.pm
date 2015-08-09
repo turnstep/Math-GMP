@@ -322,6 +322,14 @@ integer.
 
 Returns both the division and the modulo of an integer division operation.
 
+=head2 my $ret = $x->div_2exp_gmp($n);
+
+  my $x = Math::GMP->new(200);
+  my $ret = $x->div_2exp_gmp(2);
+
+Returns a right-shift of the Math::GMP object by an unsigned regular integer.
+Also look at blshift() .
+
 =head2 constant
 
 For internal use. B<Do not use directly>.
