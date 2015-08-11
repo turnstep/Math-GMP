@@ -141,7 +141,7 @@ stringify(n)
 SV *
 get_str_gmp(n, b)
        mpz_t * n
-        int b
+       int b
 
   PREINIT:
     int len;

@@ -330,6 +330,16 @@ Returns both the division and the modulo of an integer division operation.
 Returns a right-shift of the Math::GMP object by an unsigned regular integer.
 Also look at blshift() .
 
+=head2 my $str = $x->get_str_gmp($base)
+
+  my $init_n = 3 * 7 + 2 * 7 * 7 + 6 * 7 * 7 * 7;
+  my $x = Math::GMP->new($init_n);
+  my $ret = $x->get_str_gmp(7);
+
+  print $ret; # Prints "6230".
+
+Returns a string representation of the number in base $base.
+
 =head2 gcd()
 
 An alias to bgcd() .

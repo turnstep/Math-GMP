@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 29;
+use Test::More tests => 31;
 
 use Math::GMP;
 
@@ -169,4 +169,16 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 50, "ret = x->div_2exp_gmp(y) is correct.");
+}
+
+{
+    my $init_n = 3 * 7 + 2 * 7 * 7 + 6 * 7 * 7 * 7;
+    my $x = Math::GMP->new($init_n);
+    my $ret = $x->get_str_gmp(7);
+
+    # TEST
+    is ($x.'', $init_n, "x did not change after x->get_str_gmp");
+
+    # TEST
+    is ($ret, "6230", "ret = x->get_str_gmp(base) is correct.");
 }
