@@ -340,6 +340,10 @@ Also look at blshift() .
 
 Returns a string representation of the number in base $base.
 
+=head2 my $clone = $x->gmp_copy()
+
+Returns a copy of $x that can be modified without affecting the original.
+
 =head2 gcd()
 
 An alias to bgcd() .

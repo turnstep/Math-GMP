@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 31;
+use Test::More tests => 35;
 
 use Math::GMP;
 
@@ -181,4 +181,23 @@ use Math::GMP;
 
     # TEST
     is ($ret, "6230", "ret = x->get_str_gmp(base) is correct.");
+}
+
+{
+    my $x = Math::GMP->new('2' . ('123' x 100));
+    my $y = $x->gmp_copy;
+
+    # TEST
+    is ($x.'', '2'. ('123' x 100), "x did not change after x->gmp_copy");
+
+    # TEST
+    is ($y.'', '2'. ('123' x 100), "->gmp_copy returned a clone.");
+
+    $y += 1;
+
+    # TEST
+    is ($x.'', '2'. ('123' x 100), "x did not change after x->gmp_copy+modify");
+
+    # TEST
+    is ($y.'', '2'. ('123' x 99) . '124', "y changed.");
 }
