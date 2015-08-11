@@ -330,6 +330,14 @@ Returns both the division and the modulo of an integer division operation.
 Returns a right-shift of the Math::GMP object by an unsigned regular integer.
 Also look at blshift() .
 
+=head2 gcd()
+
+An alias to bgcd() .
+
+=head2 lcm()
+
+An alias to blcm() .
+
 =head2 constant
 
 For internal use. B<Do not use directly>.
