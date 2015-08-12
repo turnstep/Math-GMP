@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 37;
+use Test::More tests => 38;
 
 use Math::GMP;
 
@@ -210,4 +210,13 @@ use Math::GMP;
 
     # TEST
     is (scalar($x->gmp_tstbit(4)), 0, "gmp_tstbit #2");
+}
+
+{
+    my $x = (Math::GMP->new(24) * 5);
+
+    my $ret = $x->intify;
+
+    # TEST
+    is ($ret, 120, "test intify");
 }

@@ -348,6 +348,11 @@ Returns a copy of $x that can be modified without affecting the original.
 
 Returns whether or not bit No. $bit_index is 1 in $x.
 
+=head2 my $int = $x->intify();
+
+Returns the value of the object as an unblessed (and limited-in-precision)
+integer.
+
 =head2 gcd()
 
 An alias to bgcd() .
