@@ -1,6 +1,6 @@
 Revision history for Perl extension Math::GMP.
 
-2.10  Unknown Shlomif
+2.10  2015-08-12 Shlomif
     - Throw an exception on invalid input to Math::GMP->new;
         - https://rt.cpan.org/Ticket/Display.html?id=27521
         - Thanks to SISYPHUS for the report.
