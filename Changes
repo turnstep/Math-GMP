@@ -4,6 +4,14 @@ Revision history for Perl extension Math::GMP.
     - Throw an exception on invalid input to Math::GMP->new;
         - https://rt.cpan.org/Ticket/Display.html?id=27521
         - Thanks to SISYPHUS for the report.
+    - Put RELEASE_TESTING tests under xt instead of t.
+        - https://rt.cpan.org/Ticket/Display.html?id=106365
+        - Thanks to ilmari for the report and suggested fix.
+    - Document and test some functions that were improperly documented or
+    not tested.
+        - t/check-funcs-ret-value--rt92593.t
+        - https://rt.cpan.org/Public/Bug/Display.html?id=92593
+        - Still aiming for full POD Coverage.
 
 2.09  2015-07-29 Shlomif
     - Add the binary-left-shift / << operator.
