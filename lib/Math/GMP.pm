@@ -344,6 +344,10 @@ Returns a string representation of the number in base $base.
 
 Returns a copy of $x that can be modified without affecting the original.
 
+=head2 my $verdict = $x->gmp_tstbit($bit_index);
+
+Returns whether or not bit No. $bit_index is 1 in $x.
+
 =head2 gcd()
 
 An alias to bgcd() .

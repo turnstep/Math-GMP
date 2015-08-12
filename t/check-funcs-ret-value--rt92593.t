@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 35;
+use Test::More tests => 37;
 
 use Math::GMP;
 
@@ -200,4 +200,14 @@ use Math::GMP;
 
     # TEST
     is ($y.'', '2'. ('123' x 99) . '124', "y changed.");
+}
+
+{
+    my $x = Math::GMP->new(0b1000100);
+
+    # TEST
+    is (scalar($x->gmp_tstbit(6)), 1, "gmp_tstbit #1");
+
+    # TEST
+    is (scalar($x->gmp_tstbit(4)), 0, "gmp_tstbit #2");
 }
