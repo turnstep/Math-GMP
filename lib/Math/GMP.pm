@@ -348,6 +348,19 @@ Returns a copy of $x that can be modified without affecting the original.
 
 Returns whether or not bit No. $bit_index is 1 in $x.
 
+=head2 my $remainder = $dividend->mmod_gmp($divisor)
+
+  my $x = Math::GMP->new(2 . ('0' x 200) . 4);
+  my $y = Math::GMP->new(5);
+
+  my $ret = $x->mmod_gmp($y);
+  # $ret is now Math::GMP of 4.
+
+From the GMP documentation:
+
+Divide dividend and divisor and put the remainder in remainder. The remainder
+is always positive, and its value is less than the value of the divisor.
+
 =head2 my $int = $x->intify();
 
 Returns the value of the object as an unblessed (and limited-in-precision)

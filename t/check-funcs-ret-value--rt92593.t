@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 38;
+use Test::More tests => 40;
 
 use Math::GMP;
 
@@ -219,4 +219,17 @@ use Math::GMP;
 
     # TEST
     is ($ret, 120, "test intify");
+}
+
+{
+    my $x = Math::GMP->new(2 . ('0' x 200) . 4);
+    my $y = Math::GMP->new(5);
+
+    my $ret = $x->mmod_gmp($y);
+
+    # TEST
+    is ($ret.'', 4, "mmod_gmp");
+
+    # TEST
+    is ($x.'', '2' . ('0' x 200) . '4', "mmod_gmp did not change first arg");
 }
