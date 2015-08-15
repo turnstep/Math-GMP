@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 40;
+use Test::More tests => 42;
 
 use Math::GMP;
 
@@ -232,4 +232,15 @@ use Math::GMP;
 
     # TEST
     is ($x.'', '2' . ('0' x 200) . '4', "mmod_gmp did not change first arg");
+}
+
+{
+    my $x = Math::GMP->new(0b10001011);
+    my $ret = $x->mod_2exp_gmp(4);
+
+    # TEST
+    is ($x.'', 0b10001011, "x did not change after x->mod_2exp_gmp");
+
+    # TEST
+    is ($ret.'', 0b1011, "ret = x->mod_2exp_gmp(y) is correct.");
 }
