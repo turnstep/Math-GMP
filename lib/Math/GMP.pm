@@ -381,6 +381,18 @@ modifying $x).
 Returns a Math::GMP object containing $x shifted by $shift bits
 (where $shift is a plain integer).
 
+=head2 my $ret = $base->powm_gmp($exp, $mod);
+
+    my $base = Math::GMP->new(157);
+    my $exp = Math::GMP->new(100);
+    my $mod = Math::GMP->new(5013);
+
+    my $ret = $base->powm_gmp($exp, $mod);
+
+    # $ret is now (($base ** $exp) % $mod)
+
+Returns $base raised to the power of $exp modulo $mod.
+
 =head2 my $int = $x->intify();
 
 Returns the value of the object as an unblessed (and limited-in-precision)

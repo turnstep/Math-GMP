@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 44;
+use Test::More tests => 46;
 
 use Math::GMP;
 
@@ -254,4 +254,21 @@ use Math::GMP;
 
     # TEST
     is ($ret.'', 0b100010110000, "ret = x->mul_2exp_gmp(y) is correct.");
+}
+
+{
+    my $x = Math::GMP->new(157);
+    my $exp = Math::GMP->new(100);
+    my $mod = Math::GMP->new(5013);
+
+    my $ret = $x->powm_gmp($exp, $mod);
+    my $brute_force_ret = (($x ** $exp) % $mod);
+
+    # TEST
+    is ($x.'', 157, "x did not change after x->powm_gmp");
+
+    # TEST
+    is ($ret.'', $brute_force_ret.'',
+        "ret = x->powm_gmp(exp, mod) is correct."
+    );
 }
