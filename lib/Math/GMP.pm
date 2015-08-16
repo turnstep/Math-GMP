@@ -371,6 +371,16 @@ is always positive, and its value is less than the value of the divisor.
 Returns a Math::GMP object containing the lower $shift bits of $x (while not
 modifying $x).
 
+=head2 my $left_shifted = $x->mul_2exp_gmp($shift);
+
+  my $x = Math::GMP->new(0b10001011);
+  my $ret = $x->mul_2exp_gmp(4);
+
+  # $ret is now Math::GMP of 0b1000_1011_0000
+
+Returns a Math::GMP object containing $x shifted by $shift bits
+(where $shift is a plain integer).
+
 =head2 my $int = $x->intify();
 
 Returns the value of the object as an unblessed (and limited-in-precision)
