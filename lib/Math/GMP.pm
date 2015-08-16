@@ -393,6 +393,10 @@ Returns a Math::GMP object containing $x shifted by $shift bits
 
 Returns $base raised to the power of $exp modulo $mod.
 
+=head2 my $plain_int_ret = $x->sizeinbase_gmp($plain_int_base);
+
+Returns the size of $x in base $plain_int_base .
+
 =head2 my $int = $x->intify();
 
 Returns the value of the object as an unblessed (and limited-in-precision)

@@ -6,7 +6,7 @@ use warnings;
 # See:
 # https://rt.cpan.org/Ticket/Display.html?id=92593
 
-use Test::More tests => 46;
+use Test::More tests => 47;
 
 use Math::GMP;
 
@@ -271,4 +271,11 @@ use Math::GMP;
     is ($ret.'', $brute_force_ret.'',
         "ret = x->powm_gmp(exp, mod) is correct."
     );
+}
+
+{
+    my $x = Math::GMP->new('2' . ('123' x 100));
+
+    # TEST
+    is ($x->sizeinbase_gmp(10), 1 + 3 * 100, "sizeinbase_gmp works");
 }
