@@ -402,6 +402,54 @@ For internal use. B<Do not use directly>.
 
 For internal use. B<Do not use directly>.
 
+=head2 new_from_scalar
+
+For internal use. B<Do not use directly>.
+
+=head2 new_from_scalar_with_base
+
+For internal use. B<Do not use directly>.
+
+=head2 op_add
+
+For internal use. B<Do not use directly>.
+
+=head2 op_div
+
+For internal use. B<Do not use directly>.
+
+=head2 op_eq
+
+For internal use. B<Do not use directly>.
+
+=head2 op_mod
+
+For internal use. B<Do not use directly>.
+
+=head2 op_mul
+
+For internal use. B<Do not use directly>.
+
+=head2 op_pow
+
+For internal use. B<Do not use directly>.
+
+=head2 op_spaceship
+
+For internal use. B<Do not use directly>.
+
+=head2 op_sub
+
+For internal use. B<Do not use directly>.
+
+=head2 stringify
+
+For internal use. B<Do not use directly>.
+
+=head2 uintify
+
+For internal use. B<Do not use directly>.
+
 =head1 BUGS
 
 As of version 1.0, Math::GMP is mostly compatible with the old
