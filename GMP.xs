@@ -578,6 +578,36 @@ gmp_tstbit(m,n)
     RETVAL
 
 mpz_t *
+broot(m,n)
+	mpz_t *		m
+	unsigned long	n
+
+  CODE:
+    RETVAL = malloc (sizeof(mpz_t));
+    mpz_init(*RETVAL);
+    mpz_root(*RETVAL, *m, n);
+  OUTPUT:
+    RETVAL
+
+void
+brootrem(m,n)
+	mpz_t *		m
+	unsigned long	n
+
+  PREINIT:
+    mpz_t * root;
+    mpz_t * remainder;
+  PPCODE:
+    root = malloc (sizeof(mpz_t));
+    remainder = malloc (sizeof(mpz_t));
+    mpz_init(*root);
+    mpz_init(*remainder);
+    mpz_rootrem(*root, *remainder, *m, n);
+  EXTEND(SP, 2);
+  PUSHs(sv_setref_pv(sv_newmortal(), "Math::GMP", (void*)root));
+  PUSHs(sv_setref_pv(sv_newmortal(), "Math::GMP", (void*)remainder));
+
+mpz_t *
 bsqrt(m)
 	mpz_t *		m
 
@@ -588,4 +618,38 @@ bsqrt(m)
   OUTPUT:
     RETVAL
 
+void
+bsqrtrem(m)
+	mpz_t *		m
+
+  PREINIT:
+    mpz_t * sqrt;
+    mpz_t * remainder;
+  PPCODE:
+    sqrt = malloc (sizeof(mpz_t));
+    remainder = malloc (sizeof(mpz_t));
+    mpz_init(*sqrt);
+    mpz_init(*remainder);
+    mpz_sqrtrem(*sqrt, *remainder, *m);
+  EXTEND(SP, 2);
+  PUSHs(sv_setref_pv(sv_newmortal(), "Math::GMP", (void*)sqrt));
+  PUSHs(sv_setref_pv(sv_newmortal(), "Math::GMP", (void*)remainder));
+
+int
+is_perfect_power(m)
+	mpz_t *		m
+
+  CODE:
+    RETVAL = mpz_perfect_power_p(*m) ? 1 : 0;
+  OUTPUT:
+    RETVAL
+
+int
+is_perfect_square(m)
+	mpz_t *		m
+
+  CODE:
+    RETVAL = mpz_perfect_square_p(*m) ? 1 : 0;
+  OUTPUT:
+    RETVAL
 

@@ -56,6 +56,15 @@ while (defined($line = shift @data)) {
 	elsif ($f eq "square_root") {
 		$try .= 'Math::GMP::bsqrt($x);';
 	}
+	elsif ($f eq "square_rootrem") {
+		$try .= '[ Math::GMP::bsqrtrem($x) ];';
+	}
+	elsif ($f eq "perfect_power") {
+		$try .= '$x->is_perfect_power';
+	}
+	elsif ($f eq "perfect_square") {
+		$try .= '$x->is_perfect_square';
+	}
 	elsif ($f eq 'uintify') {
 		$try .= "Math::GMP::uintify(\$x);";
 		$ans = pop(@args) if ($Config{longsize} == 4 && scalar @args > 1);
@@ -155,6 +164,12 @@ while (defined($line = shift @data)) {
 		}
 		elsif ($f eq 'test_bit') {
 			$try .= "Math::GMP::gmp_tstbit(\$x, \$y);";
+		}
+		elsif ($f eq 'root') {
+			$try .= "\$x->broot(\$y)";
+		}
+		elsif ($f eq 'rootrem') {
+			$try .= "[ \$x->brootrem(\$y) ]";
 		}
 		else {
 			if ( $args[2] =~ /^i([-+]?\d+)$/ ) {
@@ -608,6 +623,15 @@ babcdefgh,36:808334348993
 1:0:1
 3:1:1
 3:2:0
+&root
+16:i2:4
+16:i4:2
+999:i3:9
+-1:i3:-1
+&rootrem
+16:i2:L4,0
+999:i3:L9,270
+-2:i3:L-1,-1
 &square_root
 16:4
 1:1
@@ -615,6 +639,26 @@ babcdefgh,36:808334348993
 100:10
 101:10
 99:9
+&square_rootrem
+16:L4,0
+100:L10,0
+101:L10,1
+99:L9,18
+0:L0,0
+&perfect_power
+99:0
+100:1
+101:0
+0:1
+-27:1
+-9:0
+&perfect_square
+99:0
+100:1
+101:0
+0:1
+-27:0
+-9:0
 &probab_prime
 5:10:2
 6:10:0

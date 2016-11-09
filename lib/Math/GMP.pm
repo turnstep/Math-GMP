@@ -269,6 +269,23 @@ Returns the modular inverse of $x (mod $y), if defined. This currently
 returns 0 if there is no inverse (but that may change in the future).
 Behaviour is undefined when $y is 0.
 
+=head2 broot
+
+  my $x = Math::GMP->new(100);
+  my $root = $x->root(3);    # int(100 ** (1/3)) => 4
+  print $root;
+
+Returns the integer n'th root of its argument, given a positive integer n.
+
+=head2 brootrem
+
+  my $x = Math::GMP->new(100);
+  my($root, $rem) = $x->rootrem(3); # 4 ** 3 + 36 = 100
+  print "$x is $rem more than the cube of $root";
+
+Returns the integer n'th root of its argument, and the difference such that
+C< $root ** $n + $rem == $x >.
+
 =head2 bsqrt
 
   my $x = Math::GMP->new(6);
@@ -276,6 +293,32 @@ Behaviour is undefined when $y is 0.
   print $root;
 
 Returns the integer square root of its argument.
+
+=head2 bsqrtrem
+
+  my $x = Math::GMP->new(7);
+  my($root, $rem) = $x->sqrtrem(); # 2 ** 2 + 3 = 7
+  print "$x is $rem more than the square of $root";
+
+Returns the integer square root of its argument, and the difference such that
+C< $root ** 2 + $rem == $x >.
+
+=head2 is_perfect_power
+
+  my $x = Math::GMP->new(100);
+  my $is_power = $x->is_perfect_power();
+  print "$x is " . ($is_power ? "" : "not ") . "a perfect power";
+
+Returns C<TRUE> if its argument is a power, ie if there exist integers a
+and b with b > 1 such that C< $x == $a ** $b >.
+
+=head2 is_perfect_square
+
+  my $x = Math::GMP->new(100);
+  my $is_square = $x->is_perfect_square();
+  print "$x is " . ($is_square ? "" : "not ") . "a perfect square";
+
+Returns C<TRUE> if its argument is the square of an integer.
 
 =head2 legendre
 
