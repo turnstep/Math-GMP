@@ -7,13 +7,13 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans,@data,$ans1,$z,$line);
+my ($f,$try,$x,$y,$ans,$ans1,$z);
 
-@data = <DATA>;
+my @data = <DATA>;
 my @tests = grep { ! /^&/ } @data;
 plan tests => (scalar @tests + 10);
 
-while (defined($line = shift @data)) {
+foreach my $line (@data) {
 	chomp $line;
 	if ($line =~ s/^&//) {
 		$f = $line;
