@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line,$expect_list);
+my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line);
 
 @data = <DATA>;
 @tests = grep { ! /^&/ } @data;
@@ -22,8 +22,8 @@ while (defined($line = shift @data)) {
 	@args = split(/:/,$line,99);
 	$ans = pop(@args);
 
-	$expect_list = 0;
-	if ($ans =~ s/^L//) {
+	my $expect_list = 0;
+	if ($ans =~ s/\AL//) {
 		$ans = [ split /,/, $ans ];
 		$expect_list = 1;
 	}
