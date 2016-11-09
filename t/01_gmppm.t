@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line);
+my ($f,$try,$x,$y,$ans,@tests,@data,$ans1,$z,$line);
 
 @data = <DATA>;
 @tests = grep { ! /^&/ } @data;
@@ -19,7 +19,7 @@ while (defined($line = shift @data)) {
 		$f = $line;
 		next;
 	}
-	@args = split(/:/,$line,99);
+	my @args = split(/:/,$line,99);
 	$ans = pop(@args);
 
 	my $expect_list = 0;
