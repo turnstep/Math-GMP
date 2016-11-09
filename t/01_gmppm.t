@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line);
+my ($f,$try,$x,$y,$ans,@tests,@data,@args,$ans1,$z,$line,$expect_list);
 
 @data = <DATA>;
 @tests = grep { ! /^&/ } @data;
@@ -21,6 +21,12 @@ while (defined($line = shift @data)) {
 	}
 	@args = split(/:/,$line,99);
 	$ans = pop(@args);
+
+	$expect_list = 0;
+	if ($ans =~ s/^L//) {
+		$ans = [ split /,/, $ans ];
+		$expect_list = 1;
+	}
 
 	if ( $args[0] =~ /^i([-+]?\d+)$/ ) {
 		$try = "\$x = $1;";
@@ -166,8 +172,11 @@ while (defined($line = shift @data)) {
 		}
 	}
 	$ans1 = eval $try;
-	is( "$ans1", $ans, "Test worked: $try");
-
+	if ($expect_list) {
+		is_deeply($ans1, $ans, "Test worked: $try");
+	} else {
+		is("$ans1", $ans, "Test worked: $try");
+	}
 }
 
 # Test of bfac as described in the pod
