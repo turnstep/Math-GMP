@@ -10,12 +10,12 @@ use Config;
 my ($f,$try,$x,$y,$ans,$ans1,$z);
 
 my @data = <DATA>;
-my @tests = grep { ! /^&/ } @data;
+my @tests = grep { ! /\A&/ } @data;
 plan tests => (scalar @tests + 10);
 
 foreach my $line (@data) {
 	chomp $line;
-	if ($line =~ s/^&//) {
+	if ($line =~ s/\A&//) {
 		$f = $line;
 		next;
 	}
@@ -28,10 +28,10 @@ foreach my $line (@data) {
 		$expect_list = 1;
 	}
 
-	if ( $args[0] =~ /^i([-+]?\d+)$/ ) {
+	if ( $args[0] =~ /\Ai([-+]?\d+)\z/ ) {
 		$try = "\$x = $1;";
 	}
-	elsif ( $args[0] =~ /^b([-+]?.+),([0-9]+)$/ ) {
+	elsif ( $args[0] =~ /\Ab([-+]?.+),([0-9]+)\z/ ) {
 		$try = "\$x = Math::GMP->new(\"$1\", $2);";
 	}
 	else {
@@ -81,7 +81,7 @@ foreach my $line (@data) {
 		$try .= "\$x;";
 	}
 	else {
-		if ( $args[1] =~ /^i([-+]?\d+)$/ ) {
+		if ( $args[1] =~ /\Ai([-+]?\d+)\z/ ) {
 			$try .= "\$y = $1;";
 		}
 		else {
@@ -172,7 +172,7 @@ foreach my $line (@data) {
 			$try .= "[ \$x->brootrem(\$y) ]";
 		}
 		else {
-			if ( $args[2] =~ /^i([-+]?\d+)$/ ) {
+			if ( $args[2] =~ /\Ai([-+]?\d+)\z/ ) {
 				$try .= "\$z = $1;";
 			}
 			else {
