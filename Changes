@@ -1,5 +1,11 @@
 Revision history for Perl extension Math::GMP.
 
+2.12  2016-11-09 Shlomif
+    - Add support for testing methods that return lists.
+    - Add broot, brootrem, bsqrtrem, is_perfect_power, is_perfect_square
+        - Thanks to Hugo van der Sanden for the patches
+        - https://rt.cpan.org/Ticket/Display.html?id=118677
+
 2.11  2015-08-16 Shlomif
     - Got the distribution to have full POD coverage and check all functions
     for usage.
