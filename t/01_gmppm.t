@@ -7,10 +7,10 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans,@tests,@data,$ans1,$z,$line);
+my ($f,$try,$x,$y,$ans,@data,$ans1,$z,$line);
 
 @data = <DATA>;
-@tests = grep { ! /^&/ } @data;
+my @tests = grep { ! /^&/ } @data;
 plan tests => (scalar @tests + 10);
 
 while (defined($line = shift @data)) {
