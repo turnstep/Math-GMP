@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans1,$z);
+my ($f,$try,$x,$y,$z);
 
 my @data = <DATA>;
 my @tests = grep { ! /\A&/ } @data;
@@ -186,11 +186,11 @@ foreach my $line (@data) {
 			}
 		}
 	}
-	$ans1 = eval $try;
+	my $got = eval $try;
 	if ($expect_list) {
-		is_deeply($ans1, $ans, "Test worked: $try");
+		is_deeply($got, $ans, "Test worked: $try");
 	} else {
-		is("$ans1", $ans, "Test worked: $try");
+		is("$got", $ans, "Test worked: $try");
 	}
 }
 
