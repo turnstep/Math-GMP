@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$ans,$ans1,$z);
+my ($f,$try,$x,$y,$ans1,$z);
 
 my @data = <DATA>;
 my @tests = grep { ! /\A&/ } @data;
@@ -20,7 +20,7 @@ foreach my $line (@data) {
 		next;
 	}
 	my @args = split(/:/,$line,99);
-	$ans = pop(@args);
+	my $ans = pop(@args);
 
 	my $expect_list = 0;
 	if ($ans =~ s/\AL//) {
