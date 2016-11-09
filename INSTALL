@@ -39,7 +39,7 @@ Reinstalled gmp-4.1.4 with:
 ./configure ABI=32 --disable-static
 
 
-** Notes for OSX **
+** Notes for Mac OS X **
 
 Rob writes on bug #19262:
 
