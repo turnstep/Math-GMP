@@ -174,7 +174,7 @@ foreach my $line (@data) {
 				$try .= qq#\$z = Math::GMP->new("$args[2]");#;
 			}
 			if ($f eq 'powm') {
-				$try .= "Math::GMP::powm_gmp(\$x, \$y, \$z);";
+				$try .= 'Math::GMP::powm_gmp($x, $y, $z);';
 			}
 			else {
 				warn "Unknown op";
