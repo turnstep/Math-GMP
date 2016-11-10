@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$try,$x,$y,$z);
+my ($f,$x,$y,$z);
 
 my @data = <DATA>;
 my @tests = grep { ! /\A&/ } @data;
@@ -28,15 +28,10 @@ foreach my $line (@data) {
 		$expect_list = 1;
 	}
 
-	if ( $args[0] =~ /\Ai([-+]?\d+)\z/ ) {
-		$try = "\$x = $1;";
-	}
-	elsif ( $args[0] =~ /\Ab([-+]?.+),([0-9]+)\z/ ) {
-		$try = "\$x = Math::GMP->new(\"$1\", $2);";
-	}
-	else {
-		$try = "\$x = Math::GMP->new(\"$args[0]\");";
-	}
+    my $first_arg = $args[0];
+    my $try = ( ( $first_arg =~ /\Ai([-+]?\d+)\z/ ) ? "\$x = $1;"
+        : ( $first_arg =~ /\Ab([-+]?.+),([0-9]+)\z/ ) ? "\$x = Math::GMP->new(\"$1\", $2);"
+        : "\$x = Math::GMP->new(\"$first_arg\");" );
 
 	if ($f eq "bnorm") {
 		$try .= "\$x+0;";
