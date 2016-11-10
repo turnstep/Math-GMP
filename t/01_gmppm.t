@@ -33,39 +33,39 @@ foreach my $line (@data) {
         : ( $first_arg =~ /\Ab([-+]?.+),([0-9]+)\z/ ) ? qq#\$x = Math::GMP->new("$1", $2);#
         : qq#\$x = Math::GMP->new("$first_arg");# );
 
-	if ($f eq "bnorm") {
-		$try .= "\$x+0;";
+	if ($f eq 'bnorm') {
+		$try .= '$x+0;';
 	}
-	elsif ($f eq "fibonacci") {
+	elsif ($f eq 'fibonacci') {
 		$try .= 'Math::GMP::fibonacci($x);';
 	}
-	elsif ($f eq "bfac") {
+	elsif ($f eq 'bfac') {
 		$try .= '$x->bfac();';
 	}
-	elsif ($f eq "bneg") {
-		$try .= "-\$x;";
+	elsif ($f eq 'bneg') {
+		$try .= '-$x;';
 	}
-	elsif ($f eq "babs") {
-		$try .= "abs \$x;";
+	elsif ($f eq 'babs') {
+		$try .= 'abs $x;';
 	}
-	elsif ($f eq "square_root") {
+	elsif ($f eq 'square_root') {
 		$try .= 'Math::GMP::bsqrt($x);';
 	}
-	elsif ($f eq "square_rootrem") {
+	elsif ($f eq 'square_rootrem') {
 		$try .= '[ Math::GMP::bsqrtrem($x) ];';
 	}
-	elsif ($f eq "perfect_power") {
+	elsif ($f eq 'perfect_power') {
 		$try .= '$x->is_perfect_power';
 	}
-	elsif ($f eq "perfect_square") {
+	elsif ($f eq 'perfect_square') {
 		$try .= '$x->is_perfect_square';
 	}
 	elsif ($f eq 'uintify') {
-		$try .= "Math::GMP::uintify(\$x);";
+		$try .= 'Math::GMP::uintify($x);';
 		$ans = pop(@args) if ($Config{longsize} == 4 && scalar @args > 1);
 	}
 	elsif ($f eq 'intify') {
-		$try .= "Math::GMP::intify(\$x);";
+		$try .= 'Math::GMP::intify($x);';
 		$ans = pop(@args) if ($Config{longsize} == 4 && scalar @args > 1);
 	}
 	elsif ($f eq 'probab_prime') {
@@ -73,7 +73,7 @@ foreach my $line (@data) {
 		$try .= "Math::GMP::probab_prime(\$x,$rets);";
 	}
 	elsif ($f eq 'new_from_base') {
-		$try .= "\$x;";
+		$try .= '$x;';
 	}
 	else {
 		if ( $args[1] =~ /\Ai([-+]?[0-9]+)\z/ ) {
@@ -83,88 +83,88 @@ foreach my $line (@data) {
 			$try .= qq#\$y = Math::GMP->new("$args[1]");#;
 		}
 		if ($f eq 'bcmp') {
-			$try .= "\$x <=> \$y;";
+			$try .= '$x <=> $y;';
 		}
 		elsif ($f eq 'band') {
-			$try .= "\$x & \$y;";
+			$try .= '$x & $y;';
 		}
 		elsif ($f eq 'bxor') {
-			$try .= "\$x ^ \$y;";
+			$try .= '$x ^ $y;';
 		}
 		elsif ($f eq 'bior') {
-			$try .= "\$x | \$y;";
+			$try .= '$x | $y;';
 		}
 		elsif ($f eq 'blshift') {
-			$try .= "\$x << \$y;";
+			$try .= '$x << $y;';
 		}
 		elsif ($f eq 'brshift') {
-			$try .= "\$x >> \$y;";
+			$try .= '$x >> $y;';
 		}
 		elsif ($f eq 'badd') {
-			$try .= "\$x + \$y;";
+			$try .= '$x + $y;';
 		}
 		elsif ($f eq 'bsub') {
-			$try .= "\$x - \$y;";
+			$try .= '$x - $y;';
 		}
 		elsif ($f eq 'bmul') {
-			$try .= "\$x * \$y;";
+			$try .= '$x * $y;';
 		}
 		elsif ($f eq 'bdiv') {
-			$try .= "\$x / \$y;";
+			$try .= '$x / $y;';
 		}
 		elsif ($f eq 'bmod') {
-			$try .= "\$x % \$y;";
+			$try .= '$x % $y;';
 		}
 		elsif ($f eq 'bdiv2a') {
-			$try .= "((Math::GMP::bdiv(\$x, \$y))[0]);";
+			$try .= '((Math::GMP::bdiv($x, $y))[0]);';
 		}
 		elsif ($f eq 'bdiv2b') {
-			$try .= "((Math::GMP::bdiv(\$x, \$y))[1]);";
+			$try .= '((Math::GMP::bdiv($x, $y))[1]);';
 		}
 		elsif ($f eq 'bgcd') {
-			$try .= "Math::GMP::bgcd(\$x, \$y);";
+			$try .= 'Math::GMP::bgcd($x, $y);';
 		}
 		elsif ($f eq 'gcd') {
-			$try .= "Math::GMP::gcd(\$x, \$y);";
+			$try .= 'Math::GMP::gcd($x, $y);';
 		}
 		elsif ($f eq 'blcm') {
-			$try .= "Math::GMP::blcm(\$x, \$y);";
+			$try .= 'Math::GMP::blcm($x, $y);';
 		}
 		elsif ($f eq 'bmodinv') {
-			$try .= "Math::GMP::bmodinv(\$x, \$y);";
+			$try .= 'Math::GMP::bmodinv($x, $y);';
 		}
 		elsif ($f eq 'sizeinbase') {
-			$try .= "Math::GMP::sizeinbase_gmp(\$x, \$y);";
+			$try .= 'Math::GMP::sizeinbase_gmp($x, $y);';
 		}
 		elsif ($f eq 'add_ui') {
-			$try .= "Math::GMP::add_ui_gmp(\$x, \$y); \$x";
+			$try .= 'Math::GMP::add_ui_gmp($x, $y); $x';
 		}
 		elsif ($f eq 'mul_2exp') {
-			$try .= "Math::GMP::mul_2exp_gmp(\$x, \$y);";
+			$try .= 'Math::GMP::mul_2exp_gmp($x, $y);';
 		}
 		elsif ($f eq 'div_2exp') {
-			$try .= "Math::GMP::div_2exp_gmp(\$x, \$y);";
+			$try .= 'Math::GMP::div_2exp_gmp($x, $y);';
 		}
 		elsif ($f eq 'mmod') {
-			$try .= "Math::GMP::mmod_gmp(\$x, \$y);";
+			$try .= 'Math::GMP::mmod_gmp($x, $y);';
 		}
 		elsif ($f eq 'mod_2exp') {
-			$try .= "Math::GMP::mod_2exp_gmp(\$x, \$y);";
+			$try .= 'Math::GMP::mod_2exp_gmp($x, $y);';
 		}
 		elsif ($f eq 'legendre') {
-			$try .= "Math::GMP::legendre(\$x, \$y);";
+			$try .= 'Math::GMP::legendre($x, $y);';
 		}
 		elsif ($f eq 'jacobi') {
-			$try .= "Math::GMP::jacobi(\$x, \$y);";
+			$try .= 'Math::GMP::jacobi($x, $y);';
 		}
 		elsif ($f eq 'test_bit') {
-			$try .= "Math::GMP::gmp_tstbit(\$x, \$y);";
+			$try .= 'Math::GMP::gmp_tstbit($x, $y);';
 		}
 		elsif ($f eq 'root') {
-			$try .= "\$x->broot(\$y)";
+			$try .= '$x->broot($y)';
 		}
 		elsif ($f eq 'rootrem') {
-			$try .= "[ \$x->brootrem(\$y) ]";
+			$try .= '[ $x->brootrem($y) ]';
 		}
 		else {
 			if ( $args[2] =~ /\Ai([-+]?[0-9]+)\z/ ) {
@@ -177,7 +177,7 @@ foreach my $line (@data) {
 				$try .= 'Math::GMP::powm_gmp($x, $y, $z);';
 			}
 			else {
-				warn "Unknown op";
+				warn 'Unknown op';
 			}
 		}
 	}
