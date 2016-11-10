@@ -29,7 +29,7 @@ foreach my $line (@data) {
 	}
 
     my $first_arg = $args[0];
-    my $try = ( ( $first_arg =~ /\Ai([-+]?\d+)\z/ ) ? "\$x = $1;"
+    my $try = ( ( $first_arg =~ /\Ai([-+]?[0-9]+)\z/ ) ? "\$x = $1;"
         : ( $first_arg =~ /\Ab([-+]?.+),([0-9]+)\z/ ) ? qq#\$x = Math::GMP->new("$1", $2);#
         : qq#\$x = Math::GMP->new("$first_arg");# );
 
@@ -76,7 +76,7 @@ foreach my $line (@data) {
 		$try .= "\$x;";
 	}
 	else {
-		if ( $args[1] =~ /\Ai([-+]?\d+)\z/ ) {
+		if ( $args[1] =~ /\Ai([-+]?[0-9]+)\z/ ) {
 			$try .= "\$y = $1;";
 		}
 		else {
@@ -167,7 +167,7 @@ foreach my $line (@data) {
 			$try .= "[ \$x->brootrem(\$y) ]";
 		}
 		else {
-			if ( $args[2] =~ /\Ai([-+]?\d+)\z/ ) {
+			if ( $args[2] =~ /\Ai([-+]?[0-9]+)\z/ ) {
 				$try .= "\$z = $1;";
 			}
 			else {
