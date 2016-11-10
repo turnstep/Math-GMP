@@ -30,8 +30,8 @@ foreach my $line (@data) {
 
     my $first_arg = $args[0];
     my $try = ( ( $first_arg =~ /\Ai([-+]?\d+)\z/ ) ? "\$x = $1;"
-        : ( $first_arg =~ /\Ab([-+]?.+),([0-9]+)\z/ ) ? "\$x = Math::GMP->new(\"$1\", $2);"
-        : "\$x = Math::GMP->new(\"$first_arg\");" );
+        : ( $first_arg =~ /\Ab([-+]?.+),([0-9]+)\z/ ) ? qq#\$x = Math::GMP->new("$1", $2);#
+        : qq#\$x = Math::GMP->new("$first_arg");# );
 
 	if ($f eq "bnorm") {
 		$try .= "\$x+0;";
@@ -80,7 +80,7 @@ foreach my $line (@data) {
 			$try .= "\$y = $1;";
 		}
 		else {
-			$try .= "\$y = Math::GMP->new(\"$args[1]\");";
+			$try .= qq#\$y = Math::GMP->new("$args[1]");#;
 		}
 		if ($f eq 'bcmp') {
 			$try .= "\$x <=> \$y;";
@@ -171,7 +171,7 @@ foreach my $line (@data) {
 				$try .= "\$z = $1;";
 			}
 			else {
-				$try .= "\$z = Math::GMP->new(\"$args[2]\");";
+				$try .= qq#\$z = Math::GMP->new("$args[2]");#;
 			}
 			if ($f eq 'powm') {
 				$try .= "Math::GMP::powm_gmp(\$x, \$y, \$z);";
