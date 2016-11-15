@@ -7,7 +7,7 @@ use Math::GMP;
 use Test::More;
 use Config;
 
-my ($f,$x,$y,$z);
+my ($f);
 
 my @data = <DATA>;
 my @tests = grep { ! /\A&/ } @data;
@@ -182,6 +182,7 @@ foreach my $line (@data) {
 			}
 		}
 	}
+    my ($x,$y,$z);
 	my $got = eval $try;
 	if ($expect_list) {
 		is_deeply($got, $ans, "Test worked: $try");
@@ -192,16 +193,20 @@ foreach my $line (@data) {
 
 # Test of bfac as described in the pod
 
-$x = Math::GMP->new(5);
-my $val = $x->bfac();
-is(int $val, 120, 'gfac gives expected result');
+{
+    my $x = Math::GMP->new(5);
+    my $val = $x->bfac();
+    is(int $val, 120, 'gfac gives expected result');
+}
 
 # some assorted tests for internal functions
 
-$x = Math::GMP->new('123');
-$y = Math::GMP::gmp_copy($x);
-is (ref($y),ref($x), 'refs are the same');
-is ("$y",'123', 'gmp_copy gives correct value');
+{
+    my $x = Math::GMP->new('123');
+    my $y = Math::GMP::gmp_copy($x);
+    is (ref($y),ref($x), 'refs are the same');
+    is ("$y",'123', 'gmp_copy gives correct value');
+}
 
 {
 	# boolean check should not fall back to truncating intify
