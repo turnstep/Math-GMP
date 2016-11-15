@@ -13,11 +13,12 @@ my @data = <DATA>;
 my @tests = grep { ! /\A&/ } @data;
 plan tests => (scalar @tests + 10);
 
+LINES:
 foreach my $line (@data) {
 	chomp $line;
 	if ($line =~ s/\A&//) {
 		$f = $line;
-		next;
+		next LINES;
 	}
 	my @args = split(/:/,$line,99);
 	my $ans = pop(@args);
@@ -218,8 +219,8 @@ is ("$y",'123', 'gmp_copy gives correct value');
     my $x = Math::GMP->new('2');
     my $result = $x->blshift(4, 0);
 
-    is ("$x", "2", "x stays the same.");
-    is ("$result", "32", "Result is 2 << 4");
+    is ("$x", '2', 'x stays the same.');
+    is ("$result", '32', 'Result is 2 << 4');
 }
 
 {
@@ -227,8 +228,8 @@ is ("$y",'123', 'gmp_copy gives correct value');
     my $x = Math::GMP->new('5');
     my $result = $x->brshift(1, 0);
 
-    is ("$x", "5", "x stays the same.");
-    is ("$result", "2", "Result is 2 << 4");
+    is ("$x", '5', 'x stays the same.');
+    is ("$result", '2', 'Result is 2 << 4');
 }
 
 # all done
