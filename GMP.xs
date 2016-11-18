@@ -32,6 +32,28 @@ Durham, NC 27713
 
 #define SWAP_GMP if (swap) { mpz_t* t = m; m = n; n = t; }
 
+/*
+ * mpz_rootrem() has bug with negative first argument before 5.1.0
+ */
+static int need_rootrem_workaround(mpz_t* m, unsigned long n) {
+    /* workaround only valid for n odd (n even should be an error) */
+    if ((n & 1) == 0)
+        return 0;
+
+    /* workaround only relevant for m negative */
+    if (mpz_sgn(*m) >= 0)
+        return 0;
+
+    /* workaround only needed for gmp_version < 5.1.0 */
+    if ((gmp_version[0] && gmp_version[1] != '.')            /* >= 10.0.0 */
+        || (gmp_version[0] > '5')                            /* >=  6.0.0 */
+        || (gmp_version[0] == '5' && gmp_version[2] != '0')  /* >=  5.1.0 */
+    )
+        return 0;
+
+    return 1;
+}
+
 static int
 not_here(char *s)
 {
@@ -602,7 +624,17 @@ brootrem(m,n)
     remainder = malloc (sizeof(mpz_t));
     mpz_init(*root);
     mpz_init(*remainder);
-    mpz_rootrem(*root, *remainder, *m, n);
+    if (need_rootrem_workaround(m, n)) {
+        /* Older libgmp have bugs for negative m, but if we need to we can
+         * work on abs(m) then negate the results.
+         */
+        mpz_neg(*root, *m);
+        mpz_rootrem(*root, *remainder, *root, n);
+        mpz_neg(*root, *root);
+        mpz_neg(*remainder, *remainder);
+    } else {
+        mpz_rootrem(*root, *remainder, *m, n);
+    }
   EXTEND(SP, 2);
   PUSHs(sv_setref_pv(sv_newmortal(), "Math::GMP", (void*)root));
   PUSHs(sv_setref_pv(sv_newmortal(), "Math::GMP", (void*)remainder));
