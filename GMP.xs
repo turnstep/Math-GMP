@@ -141,6 +141,26 @@ destroy(n)
     free(n);
 
 SV *
+_gmp_build_version()
+  CODE:
+    char buf[] = STRINGIFY(__GNU_MP_VERSION)
+        "." STRINGIFY(__GNU_MP_VERSION_MINOR)
+        "." STRINGIFY(__GNU_MP_VERSION_PATCHLEVEL);
+    RETVAL = newSV(6);
+    scan_vstring(buf, buf + sizeof(buf), RETVAL);
+  OUTPUT:
+    RETVAL
+
+SV *
+_gmp_lib_version()
+  CODE:
+    const char* v = gmp_version;
+    RETVAL = newSV(6);
+    scan_vstring(v, v + strlen(v), RETVAL);
+  OUTPUT:
+    RETVAL
+
+SV *
 stringify(n)
 	mpz_t *	n
 

@@ -445,6 +445,26 @@ Returns the size of $x in base $plain_int_base .
 Returns the value of the object as an unblessed (and limited-in-precision)
 integer.
 
+=head2 _gmp_build_version()
+
+  my $gmp_version = Math::GMP::_gmp_build_version;
+  if ($gmp_version ge 6.0.0) {
+    print "Math::GMP was built against libgmp-6.0.0 or later";
+  }
+
+Class method that returns as a vstring the version of libgmp against which
+this module was built.
+
+=head2 _gmp_lib_version()
+
+  my $gmp_version = Math::GMP::_gmp_lib_version;
+  if ($gmp_version ge 6.0.0) {
+    print "Math::GMP is now running with libgmp-6.0.0 or later";
+  }
+
+Class method that returns as a vstring the version of libgmp it is currently
+running.
+
 =head2 gcd()
 
 An alias to bgcd() .
