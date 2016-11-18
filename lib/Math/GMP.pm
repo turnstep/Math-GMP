@@ -30,7 +30,7 @@ use strict;
 use warnings;
 use 5.006;
 use Carp;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK $AUTOLOAD);
+use vars qw(@ISA @EXPORT @EXPORT_OK $AUTOLOAD);
 
 use overload (
 	'""'  =>   sub { stringify($_[0]) },
@@ -65,7 +65,7 @@ require AutoLoader;
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-our $VERSION = '2.12';
+our $VERSION = '2.13';
 
 =begin Removed
 
