@@ -1,5 +1,10 @@
 Revision history for Perl extension Math::GMP.
 
+2.14  2017-02-01 Shlomif
+    - Hopefully fix the GPG signature.
+        - https://rt.cpan.org/Ticket/Display.html?id=120062
+        - Thanks to Pavel Mateja for the report.
+
 2.13  2016-11-18 Shlomif
     - Fix the tests on older libgmps.
         - See https://rt.cpan.org/Ticket/Display.html?id=118816
