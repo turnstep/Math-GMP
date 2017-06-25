@@ -28,7 +28,7 @@ package Math::GMP;
 
 use strict;
 use warnings;
-use 5.006;
+use 5.010;
 use Carp;
 use vars qw(@ISA @EXPORT @EXPORT_OK $AUTOLOAD);
 
@@ -65,7 +65,7 @@ require AutoLoader;
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-our $VERSION = '2.14';
+our $VERSION = '2.15';
 
 =begin Removed
 
