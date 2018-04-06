@@ -1,4 +1,5 @@
 Revision history for Perl extension Math::GMP.
+    - Depend on Alien::GMP to automatically install GMP when missing
 
 2.17  2018-04-05 Shlomif
     - Correct the link to the GitHub repository.
