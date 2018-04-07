@@ -34,7 +34,7 @@ use vars qw(@ISA @EXPORT @EXPORT_OK $AUTOLOAD);
 
 use overload (
 	'""'  =>   sub { stringify($_[0]) },
-	'0+'  =>   sub { intify($_[0]) },
+	'0+'  =>   sub { $_[0] >= 0 ? uintify($_[0]) : intify($_[0]) },
 	'bool' =>  sub { $_[0] != 0 },
 
 	'<=>' =>   \&op_spaceship,
