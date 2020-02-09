@@ -1,7 +1,7 @@
 Revision history for Perl extension Math::GMP.
 
 2.20  2020-02-09 Shlomif
-    - Try to fix tests against when using libgmp-6.2.0
+    - Try to fix tests when using libgmp version 6.2.0
         - https://rt.cpan.org/Public/Bug/Display.html?id=131718
         - Thanks to GREGOA and HVDS and Debian.
         - The tests should still pass on earlier libgmps.
