@@ -529,6 +529,31 @@ For internal use. B<Do not use directly>.
 
 For internal use. B<Do not use directly>.
 
+=head1 DIVISION BY ZERO
+
+Whereas perl normally catches division by zero to provide a standard
+perl-level error message, C<libgmp> does not; the result is usually
+a SIGFPE (floating point exception) giving a core dump if you ever
+attempt to divide a C<Math::GMP> object by anything that evaluates
+to zero. This can make it hard to diagnose where the error has occurred
+in your perl code.
+
+As of perl-5.36.0, SIGFPE is delivered in a way that can be caught
+by a C<%SIG> handler. So you can get a stack trace with code like:
+
+  use Carp;  # load it up front
+  local $SIG{FPE} = sub { confess(@_) };
+
+Before perl-5.36.0 this approach won't work: you'll need to use
+L<POSIX/sigaction> instead:
+
+  use Carp;
+  use POSIX qw{ sigaction SIGFPE };
+  sigaction(SIGFPE, POSIX::SigAction->new(sub { confess(@_) }));
+
+In either case, you should not attempt to return from the signal
+handler, since the signal will just be thrown again.
+
 =head1 BUGS
 
 As of version 1.0, Math::GMP is mostly compatible with the old
