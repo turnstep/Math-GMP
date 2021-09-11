@@ -588,11 +588,17 @@ implementation.
 See L<Math::BigInt> and L<Math::BigInt::GMP> or
 L<Math::BigInt::Pari> or L<Math::BigInt::BitVect>.
 
+See L<Math::GMPz>, L<Math::GMPq>, and friends
+( L<https://metacpan.org/search?q=math%3A%3Agmp> ) for bindings of
+other parts of GMP / MPFR / etc.
+
 =head1 AUTHOR
 
 Chip Turner <chip@redhat.com>, based on the old Math::BigInt by Mark Biggar
 and Ilya Zakharevich.  Further extensive work provided by Tels
 <tels@bloodgate.com>.
 
+Shlomi Fish ( L<https://www.shlomifish.org/> ) has done some maintenance work
+while putting his changes under CC0.
 
 =cut
