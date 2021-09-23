@@ -65,7 +65,7 @@ require AutoLoader;
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-our $VERSION = '2.22';
+our $VERSION = '2.23';
 
 =begin Removed
 
@@ -423,6 +423,16 @@ modifying $x).
 
 Returns a Math::GMP object containing $x shifted by $shift bits
 (where $shift is a plain integer).
+
+=head2 my $multiplied = $x->bmulf($float)
+
+  my $x = Math::GMP->new(3)->bpow(100);
+  my $ret = $x->bmulf(1.5);
+
+  # $ret is now Math::GMP of floor(3^101 / 2)
+
+Returns a Math::GMP object representing $x multiplied by the floating point
+value $float (with the result truncated towards zero).
 
 =head2 my $ret = $base->powm_gmp($exp, $mod);
 

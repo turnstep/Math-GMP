@@ -346,6 +346,43 @@ op_mul(m,n,swap)
 
 
 mpz_t *
+bmulf(n,d)
+	mpz_t *		n
+	double		d
+
+  PREINIT:
+    mpf_t *nf, *df;
+    mp_bitcnt_t prec;
+  CODE:
+    /*
+     Multiply (mpz_t) n by (double) d returning an (mpz_t) result.
+     Uses GMP floats with maximum needed precision.
+    */
+    prec = mpf_get_default_prec();
+    mpf_set_default_prec(mpz_sizeinbase(*n, 2) + 8 * sizeof(double));
+
+    RETVAL = malloc (sizeof(mpz_t));
+    nf = malloc (sizeof(mpf_t));
+    df = malloc (sizeof(mpf_t));
+    mpz_init(*RETVAL);
+    mpf_init(*nf);
+    mpf_init(*df);
+
+    mpf_set_z(*nf, *n);
+    mpf_set_d(*df, d);
+    mpf_mul(*nf, *nf, *df);
+    mpz_set_f(*RETVAL, *nf);
+    mpf_clear(*nf);
+    mpf_clear(*df);
+    free(nf);
+    free(df);
+    /* restore default */
+    mpf_set_default_prec(prec);
+  OUTPUT:
+    RETVAL
+
+
+mpz_t *
 op_div(m,n,swap)
 	mpz_t *		m
 	mpz_t *		n
