@@ -351,7 +351,7 @@ bmulf(n,d)
 	double		d
 
   PREINIT:
-    mpf_t *nf, *df;
+    mpf_t nf, df;
     mp_bitcnt_t prec;
   CODE:
     /*
@@ -362,20 +362,16 @@ bmulf(n,d)
     mpf_set_default_prec(mpz_sizeinbase(*n, 2) + 8 * sizeof(double));
 
     RETVAL = malloc (sizeof(mpz_t));
-    nf = malloc (sizeof(mpf_t));
-    df = malloc (sizeof(mpf_t));
     mpz_init(*RETVAL);
-    mpf_init(*nf);
-    mpf_init(*df);
+    mpf_init(nf);
+    mpf_init(df);
 
-    mpf_set_z(*nf, *n);
-    mpf_set_d(*df, d);
-    mpf_mul(*nf, *nf, *df);
-    mpz_set_f(*RETVAL, *nf);
-    mpf_clear(*nf);
-    mpf_clear(*df);
-    free(nf);
-    free(df);
+    mpf_set_z(nf, *n);
+    mpf_set_d(df, d);
+    mpf_mul(nf, nf, df);
+    mpz_set_f(*RETVAL, nf);
+    mpf_clear(nf);
+    mpf_clear(df);
     /* restore default */
     mpf_set_default_prec(prec);
   OUTPUT:
