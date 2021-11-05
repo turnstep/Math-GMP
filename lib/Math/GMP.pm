@@ -444,6 +444,8 @@ Returns a Math::GMP object containing $x shifted by $shift bits
 Returns a Math::GMP object representing $x multiplied by the floating point
 value $float (with the result truncated towards zero).
 
+( Added in version 2.23 .)
+
 =head2 my $ret = $base->powm_gmp($exp, $mod);
 
     my $base = Math::GMP->new(157);

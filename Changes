@@ -1,7 +1,9 @@
 Revision history for Perl extension Math::GMP.
 
-2.23  2021-09-23 Hugo
+2.23  2021-11-05 Shlomif
 	- add support for bmulf() to multiply by a floating point number
+        - Hugo
+    - add support for bnok() (Binomial)
 
 2.22  2021-09-20 Shlomif
     - Signature files are generated unreliably and are an ongoing source of
