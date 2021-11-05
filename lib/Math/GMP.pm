@@ -199,6 +199,16 @@ be represented in the base specified by the second parameter.
 
 Calculates the factorial of $x and returns the result.
 
+=head2 $n->bnok($k)
+
+  $x = Math::GMP->new(5);
+  my $val = $x->bnok(2);      # 1*2*3*4*5/(1*2)/(1*2*3) = 10
+  print $val;
+
+Calculates the binomial of $n over $k and returns the result.
+
+( Added in version 2.23 .)
+
 =head2 my $val = $x->band($y, $swap)
 
   $x = Math::GMP->new(6);

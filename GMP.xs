@@ -630,6 +630,19 @@ bfac(n)
 
 
 mpz_t *
+bnok(n, k)
+	long		n
+	long		k
+
+  CODE:
+    RETVAL = malloc (sizeof(mpz_t));
+    mpz_init(*RETVAL);
+    mpz_bin_uiui(*RETVAL, n, k);
+  OUTPUT:
+    RETVAL
+
+
+mpz_t *
 gmp_copy(m)
 	mpz_t *		m
 
