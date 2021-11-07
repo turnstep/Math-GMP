@@ -205,7 +205,8 @@ Calculates the factorial of $x and returns the result.
   my $val = $x->bnok(2);      # 1*2*3*4*5/(1*2)/(1*2*3) = 10
   print $val;
 
-Calculates the binomial of $n over $k and returns the result.
+Calculates the binomial coefficient of $n over $k and returns the result.
+Equals to $n!/($k!*($n-$k)!).
 
 ( Added in version 2.23 .)
 
