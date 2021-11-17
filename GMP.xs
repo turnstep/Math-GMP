@@ -54,13 +54,6 @@ static int need_rootrem_workaround(mpz_t* m, unsigned long n) {
     return 1;
 }
 
-static int
-not_here(char *s)
-{
-    croak("%s not implemented on this architecture", s);
-    return -1;
-}
-
 #if 0
 static double
 constant(char *name, int arg)
