@@ -295,6 +295,19 @@ mod_2exp_gmp(in, cnt)
     RETVAL
 
 
+SV *
+op_bool(m,n,swap)
+	mpz_t *		m
+	mpz_t *		n
+	bool		swap
+
+  CODE:
+	/* n is dummy variable for unary op */
+	RETVAL = mpz_sgn(*m) ? &PL_sv_yes : &PL_sv_no;
+  OUTPUT:
+    RETVAL
+
+
 mpz_t *
 op_add(m,n,swap)
 	mpz_t *		m
