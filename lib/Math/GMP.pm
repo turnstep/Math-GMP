@@ -33,9 +33,9 @@ use Carp;
 use vars qw(@ISA @EXPORT @EXPORT_OK $AUTOLOAD);
 
 use overload (
-	'""'  =>   sub { stringify($_[0]) },
-	'0+'  =>   sub { $_[0] >= 0 ? uintify($_[0]) : intify($_[0]) },
-	'bool' =>  sub { $_[0] != 0 },
+	'""'  =>   \&op_stringify,
+	'0+'  =>   \&op_numify,
+	'bool' =>  \&op_bool,
 
 	'<=>' =>   \&op_spaceship,
 	'=='  =>   \&op_eq,
