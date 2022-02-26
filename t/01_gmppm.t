@@ -16,7 +16,7 @@ plan tests => (2 * @tests + 10);
 my $WITH_FEATURE = ("$]" >= 5.022);
 
 # work around Test::Builder bug if needed
-monkey_patch();
+monkey_patch() if $Test::More::VERSION < 1.302189;
 
 LINES:
 foreach my $line (@data) {
@@ -275,7 +275,7 @@ foreach my $line (@data) {
 # all done
 
 #
-# At least up to v1.302164, Test::Builder::_unoverload() tries to invoke
+# Until v1.302189, Test::Builder::_unoverload() tries to invoke
 # an overload method wrongly. We try it here, and if it fails we monkey
 # patch it to a version that should work.
 #
