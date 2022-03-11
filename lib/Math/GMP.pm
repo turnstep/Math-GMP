@@ -516,6 +516,10 @@ For internal use. B<Do not use directly>.
 
 For internal use. B<Do not use directly>.
 
+=head2 op_bool
+
+For internal use. B<Do not use directly>.
+
 =head2 op_div
 
 For internal use. B<Do not use directly>.
@@ -532,11 +536,19 @@ For internal use. B<Do not use directly>.
 
 For internal use. B<Do not use directly>.
 
+=head2 op_numify
+
+For internal use. B<Do not use directly>.
+
 =head2 op_pow
 
 For internal use. B<Do not use directly>.
 
 =head2 op_spaceship
+
+For internal use. B<Do not use directly>.
+
+=head2 op_stringify
 
 For internal use. B<Do not use directly>.
 
