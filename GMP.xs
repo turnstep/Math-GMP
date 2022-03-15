@@ -104,18 +104,18 @@ sv2gmp(SV* sv)
 SV *
 stringify(mpz_t *n)
 {
-	char *buf;
-	char* pv;
+    char *buf;
+    char *pv;
     int len;
-	SV *sv;
+    SV *sv;
 
     len = mpz_sizeinbase(*n, 10);
-	buf = malloc(len + 2);
+    buf = malloc(len + 2);
 
-	mpz_get_str(buf, 10, *n);
-	sv = newSVpv(buf, strlen(buf));
-	free(buf);
-	return sv;
+    mpz_get_str(buf, 10, *n);
+    sv = newSVpv(buf, strlen(buf));
+    free(buf);
+    return sv;
 }
 
 
